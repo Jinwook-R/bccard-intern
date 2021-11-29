@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/BoardController.java" afterDir="false" />
-    </list>
+    <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,6 +64,8 @@
       <updated>1637819192138</updated>
       <workItem from="1637819194967" duration="3809000" />
       <workItem from="1638144796380" duration="12486000" />
+      <workItem from="1638186657939" duration="518000" />
+      <workItem from="1638187207627" duration="6830000" />
     </task>
     <servers />
   </component>
