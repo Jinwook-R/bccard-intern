@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from '../src/pages/home/Home';
+import Login from '../src/pages/login/Login.js'
+import React, {useEffect, useState} from 'react'
 
 function App() {
+
+    useEffect(()=>{
+        //이미 로그인 된 사용자인지 체크 로직
+        //window.location.href = "/login";
+    },[]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Home></Home>
     </div>
   );
 }
 
 export default App;
+
+/*
+*
+*
+*
+*
+*
+*
+*
+*/

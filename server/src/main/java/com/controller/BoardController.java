@@ -14,8 +14,6 @@ import com.domain.Board;
 import com.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 
-
-
 @Slf4j
 @Controller
 @RequestMapping("/board")
@@ -27,15 +25,9 @@ public class BoardController {
 	@GetMapping("/list")
 	public void list(Model model, String keyword) throws Exception {
 		List<Board> list = service.list(keyword);
-		
 		model.addAttribute("list",list);
 	}
 
-	@GetMapping("/insert")
-	public void insertForm(Model model, Board board) {
-		
-		
-	}
 
 	@PostMapping("/insert")
 	public String insert(Model model, Board board) throws Exception{
