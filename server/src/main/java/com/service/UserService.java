@@ -2,16 +2,14 @@ package com.service;
 
 import com.domain.User;
 
-import java.util.List;
-
 public interface UserService {
 
-	public User create(final User user) throws Exception;
+	public User save(final User user);
 
-	public User findByEmail(String email) throws Exception;
+	public User getByCredentials(String email, String password);
 
-	public Boolean existsByEmail(String email) throws Exception;
-
-	public User findByEmailAndPassword(String email, String password) throws Exception;
+//	public Boolean existsByEmail(String email) throws Exception;
+//
+//	public User findByEmailAndPassword(String email, String password) throws Exception;
 
 }

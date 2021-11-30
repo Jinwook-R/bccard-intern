@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.domain.Board;
+import com.domain.Response;
 import com.domain.User;
 
 import com.service.UserService;
@@ -8,8 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,17 +24,32 @@ public class UserController {
 	public ResponseEntity<?> registerUser(@RequestBody User user){
 		User responseUser = null;
 		try {
-			log.info("user: !!!!!!",user);
-			responseUser = userService.create(user);
+			responseUser = userService.save(user);
 		} catch(Exception e) {
-
+			log.info(e.getMessage());
 		}
 		return ResponseEntity.ok().body(responseUser);
 	}
 
-	@GetMapping("/insert")
-	public void insertForm(Model model, Board board) {
+	@PostMapping("/signin")
+	public ResponseEntity<?> authenticate(@RequestBody User user) {
 
+		User nowUser = userService.getByCredentials(
+				user.getEmail(),
+				user.getPassword()
+		);
+
+		if(user != null){
+			final User responseUser = User.builder()
+					.email(nowUser.getEmail())
+					.id(nowUser.getId())
+					.build();
+			return ResponseEntity.ok().body(responseUser);
+		} else {
+			Response response = Response.builder()
+					.error("Login failed.")
+					.build();
+			return ResponseEntity.badRequest().body(response);
+		}
 	}
-
 }

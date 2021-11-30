@@ -12,14 +12,15 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
-	public User create(User user) throws Exception {
+	public User save(User user) {
 
 		if(user == null || user.getEmail() == null){
 			throw new RuntimeException("Invalid arguments");
 		}
 
 		final String email = user.getEmail();
-		if(userMapper.existsByEmail(email)){
+
+		if(userMapper.findByEmail(email) != null){
 			throw new RuntimeException("Email already exists");
 		}
 
@@ -27,17 +28,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findByEmail(String email) throws Exception {
-		return null;
+	public User getByCredentials(String email, String password) {
+		return userMapper.findByEmailAndPassword(email, password);
 	}
 
-	@Override
-	public Boolean existsByEmail(String email) throws Exception {
-		return null;
-	}
-
-	@Override
-	public User findByEmailAndPassword(String email, String password) throws Exception {
-		return null;
-	}
+//	@Override
+//	public User findByEmail(String email) throws Exception {
+//		return null;
+//	}
+//
+//	@Override
+//	public Boolean existsByEmail(String email) throws Exception {
+//		return null;
+//	}
+//
+//	@Override
+//	public User findByEmailAndPassword(String email, String password) throws Exception {
+//		return null;
+//	}
 }

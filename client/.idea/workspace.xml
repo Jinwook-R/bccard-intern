@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="" />
+    <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/UserServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

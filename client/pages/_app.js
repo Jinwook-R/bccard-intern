@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import 'antd/dist/antd.css';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import {Provider} from "react-redux";
 
 //_app.js는 페이지들의 공통인 부분
 const App = ({Component}) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    return(
+
+    return (
         <>
             <Head>
                 <title>BC로</title>
@@ -14,11 +15,10 @@ const App = ({Component}) => {
             <Component/>
         </>
     );
-
 }
 
 App.propTypes = {
     Component: PropTypes.elementType.isRequired,
 }
 
-export default App;
+export default wrapper.withRedux(App);

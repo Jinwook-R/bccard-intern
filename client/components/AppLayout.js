@@ -8,7 +8,6 @@ import UserProfile from '../components/UserProfile';
 const AppLayout = ({children}) =>{
 
 
-
     return (
         <div>
             <Menu mode="horizontal">
