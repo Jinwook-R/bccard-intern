@@ -13,7 +13,8 @@ const App = ({Component}) => {
             </Head>
             <Component/>
         </>
-    )
+    );
+    
 }
 
 App.propTypes = {

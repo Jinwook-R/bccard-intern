@@ -11,10 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Slf4j
 @Controller
@@ -25,21 +23,14 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping("/signup")
-	public ResponseEntity<?> registerUser(User user){
-
+	public ResponseEntity<?> registerUser(@RequestBody User user){
 		User responseUser = null;
-		try{
-			responseUser = User.builder()
-					.email("")
-					.id("")
-					.username("")
-					.build();
-
-
-		}catch(Exception e){
+		try {
+			log.info("user: !!!!!!",user);
+			responseUser = userService.create(user);
+		} catch(Exception e) {
 
 		}
-
 		return ResponseEntity.ok().body(responseUser);
 	}
 
@@ -49,5 +40,3 @@ public class UserController {
 	}
 
 }
-
-

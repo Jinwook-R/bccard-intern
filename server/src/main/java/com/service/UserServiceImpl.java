@@ -20,7 +20,6 @@ public class UserServiceImpl implements UserService {
 
 		final String email = user.getEmail();
 		if(userMapper.existsByEmail(email)){
-//			log.warn("Email already exists{}", email);
 			throw new RuntimeException("Email already exists");
 		}
 
