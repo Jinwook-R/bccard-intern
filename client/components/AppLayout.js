@@ -7,9 +7,9 @@ import UserProfile from '../components/UserProfile';
 
 const AppLayout = ({children}) =>{
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    return(
+
+    return (
         <div>
             <Menu mode="horizontal">
                 <Menu.Item>
@@ -26,18 +26,18 @@ const AppLayout = ({children}) =>{
                 {/*</Menu.Item>*/}
             </Menu>
             <Row gutter={8}>
-                {/*<Col xs={24} md={12}>{children}</Col>*/}
+                <Col xs={24} md={12}>{children}</Col>
                 <Col xs={24} md={6}></Col>
-                <Col xs={24} md={12}>
-                    {isLoggedIn ? <UserProfile/> : <LoginForm/>}
-                </Col>
+                {/*<Col xs={24} md={12}>*/}
+
+                {/*</Col>*/}
                 <Col xs={24} md={6}></Col>
                 {/*<Col xs={24} md={6}>*/}
                 {/*    <a href="https://www.naver.com" target="_blank" rel="noreferrer noopener">네이버</a>*/}
                 {/*</Col>*/}
             </Row>
         </div>
-    )
+    );
 };
 
 AppLayout.propTypes = {

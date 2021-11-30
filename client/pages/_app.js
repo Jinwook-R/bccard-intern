@@ -5,7 +5,7 @@ import Head from 'next/head';
 
 //_app.js는 페이지들의 공통인 부분
 const App = ({Component}) => {
-
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     return(
         <>
             <Head>
@@ -14,7 +14,7 @@ const App = ({Component}) => {
             <Component/>
         </>
     );
-    
+
 }
 
 App.propTypes = {
