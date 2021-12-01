@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/config/WebMvcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/config/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/security/JwtAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/security/TokenProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/ReviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/domain/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/mapper/BoardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/mapper/ReviewMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/ReviewService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/BoardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/ReviewServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/com/mapper/BoardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/com/mapper/ReviewMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/com/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/com/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/templates/board/insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/templates/board/insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/templates/board/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/templates/board/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/templates/board/read.html" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/templates/board/read.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/templates/board/success.html" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/templates/board/success.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/templates/board/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/templates/board/update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/login" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -71,6 +53,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/src/pages/login" />
       <recent name="$PROJECT_DIR$/src/pages/home" />
     </key>

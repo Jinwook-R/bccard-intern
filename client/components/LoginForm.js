@@ -3,8 +3,10 @@ import {Button, Form, Input} from 'antd';
 import Link from "next/link";
 import useInput from "../hooks/useInput";
 import styled from 'styled-components';
-import {signin} from "../api/ApiService";
+import {useDispatch} from "react-redux";
+import {useCallback} from "react";
 
+import {signInRequestAction} from '../reducers/user'
 
 const StyledLoginForm = styled.div`
   width: 500px;
@@ -14,13 +16,15 @@ const StyledLoginForm = styled.div`
 const LoginForm = () => {
     const [id, onChangeId] = useInput('asdf@naver.com');
     const [password, onChangePassword] = useInput('1234');
+    const dispatch = useDispatch();
 
-    const onSubmitForm = () => {
-        signin({
-            email: id,
-            password
-        })
-    }
+    const onSubmitForm = useCallback( (e) => {
+
+        dispatch(signInRequestAction({
+            email:id,
+            password,
+        }));
+    },[id,password]);
 
     return (
         <StyledLoginForm>

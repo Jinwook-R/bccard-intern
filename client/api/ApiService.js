@@ -1,6 +1,6 @@
 import {API_BASE_URL} from './config.js';
 
-function call(api, method, request){
+function call(api, method, data){
     let headers = new Headers({
         "Content-Type":"application/json",
     });
@@ -16,8 +16,8 @@ function call(api, method, request){
         method: method,
     };
 
-    if(request){
-        options.body= JSON.stringify(request);
+    if(data){
+        options.body= JSON.stringify(data);
     }
 
     return fetch(options.url, options).then((response) =>
@@ -30,19 +30,18 @@ function call(api, method, request){
     );
 }
 
-//로그인
 export function signin(user){
+
     return call("/auth/signin", "POST", user)
         .then((response) => {
             console.log("response: ", response);
             if(response.token){
                 localStorage.setItem("ACCESS_TOKEN", response.token);
-                window.location.href="/";
             }
-        })
+            return response;
+        });
 }
 
 export function signout() {
     localStorage.setItem("ACCESS_TOKEN", null);
-    // window.location.href="/";
 }

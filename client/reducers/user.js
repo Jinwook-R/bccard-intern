@@ -1,79 +1,116 @@
-const dummyUser = {
-    id: 1,
-    nickname: '제로초',
-    Posts: [],
-    Followings: [],
-    Followers: [],
-};
-
 export const initialState = {
-    isLoggedIn: false,
-    user: null,
-    signUpData: {},
-    loginData: {},
+    isSignedIn: false, // 로그인 여부
+    isSigningOut: false, // 로그아웃 시도중
+    isSigningIn: false, // 로그인 시도중
+    signInErrorReason: '', // 로그인 실패 사유
+    isSignedUp: false, // 회원가입 성공
+    isSignIngUp: false, // 회원가입 시도중
+    signUpErrorReason: '', // 회원가입 실패 사유
+    me: null, // 내 정보
+    followingList: [], // 팔로잉 리스트
+    followerList: [], // 팔로워 리스트
+
 };
 
-export const SIGN_UP = 'SIGN_UP';
+// Action types
+export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
-export const LOG_IN = 'LOG_IN'; // 액션의 이름
-export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS'; // 액션의 이름
-export const LOG_IN_FAILURE = 'LOG_IN_FAILURE'; // 액션의 이름
-export const LOG_OUT = 'LOG_OUT';
+export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 
-export const signUpAction = (data) => {
-    return {
-        type: SIGN_UP,
-        data,
-    };
-};
+export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST';
+export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
+export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
 
-export const signUpSuccess = {
-    type: SIGN_UP_SUCCESS,
-};
+export const SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST';
+export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
+export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE';
 
-export const loginAction = (data) => {
-    return {
-        type: LOG_IN,
-        data,
-    }
-};
-export const logoutAction = {
-    type: LOG_OUT,
-};
-export const signUp = (data) => {
-    return {
-        type: SIGN_UP,
-        data,
-    }
-};
+// Actions creators
+export const signUpRequestAction = data => ({
+    type: SIGN_UP_REQUEST,
+    payload: {
+        signUpData: data,
+    },
+});
+
+export const signInRequestAction = data => {
+    return ({
+    type: SIGN_IN_REQUEST,
+    payload: {
+        signInData: data,
+    },
+})};
+
+export const logoutRequestAction = () => ({
+    type: SIGN_OUT_REQUEST,
+});
 
 export default (state = initialState, action) => {
-    switch (action.type) {
-        case LOG_IN: {
+    const { type, payload, error } = action;
+    console.log(type, payload, error,'?');
+    switch (type) {
+        case SIGN_UP_REQUEST: {
             return {
                 ...state,
-                isLoggedIn: true,
-                user: dummyUser,
-                loginData: action.data,
+                isSignIngUp: true,
+                isSignedUp: false,
+                signUpErrorReason: '',
             };
         }
-        case LOG_OUT: {
+        case SIGN_UP_SUCCESS: {
             return {
                 ...state,
-                isLoggedIn: false,
-                user: null,
+                isSignIngUp: false,
+                isSignedUp: true,
             };
         }
-        case SIGN_UP: {
+        case SIGN_UP_FAILURE: {
             return {
                 ...state,
-                signUpData: action.data,
+                isSignIngUp: false,
+                signUpErrorReason: error,
             };
         }
-        default: {
+        case SIGN_IN_REQUEST:
             return {
                 ...state,
-            }
-        }
+                isSigningIn: true,
+                signInErrorReason: '',
+            };
+        case SIGN_IN_SUCCESS:
+            return {
+                ...state,
+                me:payload,
+                isSigningIn: false,
+                isSignedIn: true,
+                isLoading: false,
+            };
+        case SIGN_IN_FAILURE:
+            return {
+                ...state,
+                isSigningIn: false,
+                isSignedIn: false,
+                signInErrorReason: error,
+                me: null,
+            };
+        case SIGN_OUT_REQUEST:
+            return {
+                ...state,
+                isSigningOut: true,
+            };
+        case SIGN_OUT_SUCCESS:
+            return {
+                ...state,
+                isSignedIn: false,
+                isSigningOut: false,
+                me: {},
+            };
+        case SIGN_OUT_FAILURE:
+            return {
+                ...state,
+                isSigningOut: false,
+            };
+        default:
+            return state;
     }
 };
