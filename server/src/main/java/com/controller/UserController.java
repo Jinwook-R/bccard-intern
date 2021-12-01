@@ -3,6 +3,7 @@ package com.controller;
 import com.domain.Response;
 import com.domain.User;
 
+import com.security.TokenProvider;
 import com.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private TokenProvider tokenProvider;
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@RequestBody User user){
@@ -40,16 +44,17 @@ public class UserController {
 		);
 
 		if(user != null){
-			final User responseUser = User.builder()
-					.email(nowUser.getEmail())
-					.id(nowUser.getId())
-					.build();
+			final String token = tokenProvider.create(nowUser);
+			final User responseUser = User.builder().email(nowUser.getEmail()).id(nowUser.getId()).token(token).build();
+
 			return ResponseEntity.ok().body(responseUser);
 		} else {
-			Response response = Response.builder()
-					.error("Login failed.")
-					.build();
+			Response response = Response.builder().error("Login failed.").build();
+
 			return ResponseEntity.badRequest().body(response);
 		}
+
 	}
+
+
 }

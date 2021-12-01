@@ -1,11 +1,12 @@
 import React from "react";
 import AppLayout from "../components/AppLayout";
-import {useState} from "react";
 import LoginForm from "../components/LoginForm";
 import UserProfile from "../components/UserProfile";
+import {useSelector} from "react-redux";
 
 const Home = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { isLoggedIn } = useSelector(state => state.user);
+
     return (
         <AppLayout>
                 {isLoggedIn ? <UserProfile/> : <LoginForm/>}

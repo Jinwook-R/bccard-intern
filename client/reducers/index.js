@@ -1,25 +1,20 @@
-const initialState = {
-    name:'zerocho',
-    age: 27,
-    password:'babo',
-}
+import { HYDRATE } from 'next-redux-wrapper';
+import { combineReducers } from 'redux';
 
-const changeNickname = {
-    type: 'CHANGE_NICKNAME',
-    data: 'boogicho',
-}
+import user from './user';
 
-const rootReducer = (state = initialState, action) => {
-
-    switch (action.type) {
-        case 'CHANGE_NICKNAME':
-            return {
-                ...state,
-                name: action.data,
-            }
-
-    }
-
-};
+const rootReducer = combineReducers({
+    index: (state = {}, action) => {
+        switch (action.type) {
+            case HYDRATE:
+                console.log('HYDRATE', action);
+                return { ...state, ...action.payload };
+            default:
+                return state;
+        }
+    },
+    user
+});
 
 export default rootReducer;
+

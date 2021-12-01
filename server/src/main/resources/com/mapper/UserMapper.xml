@@ -23,7 +23,7 @@
 	</select>
 
 	<update id="update">
-		UPDATE board
+		UPDATE review
 		   SET title = #{title}
 		     , writer = #{writer}
 		     , content = #{content}
@@ -31,7 +31,7 @@
 	</update>
 
 	<delete id="delete">
-		DELETE FROM board WHERE board_no = #{boardNo}
+		DELETE FROM review WHERE board_no = #{boardNo}
 	</delete>
 	
 </mapper>

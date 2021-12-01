@@ -5,9 +5,9 @@
 <title>Board</title>
 </head>
 <body>
-   <form id="board" action="/board/list" th:object="${board}" method="get">
+   <form id="review" action="/review/list" th:object="${review}" method="get">
 
-      <a href="/board/insert" >글쓰기</a>
+      <a href="/review/insert" >글쓰기</a>
       <input type="text" name="keyword" /><input type="submit" value="검색" />
       <table border="1">
          <tr>
@@ -22,14 +22,14 @@
             <td colspan="5" align="center">조회된 데이터가 없습니다.</td>
          </tr>
          
-         <tr th:each="board : ${list}">
-            <td align="center" th:text="${board.boardNo}"></td>     
+         <tr th:each="review : ${list}">
+            <td align="center" th:text="${review.boardNo}"></td>
             <td align="left"> 
-               <a th:href="@{|/board/read?boardNo=${board.boardNo}|}" th:text="${board.title}"></a>
+               <a th:href="@{|/review/read?boardNo=${review.boardNo}|}" th:text="${review.title}"></a>
             </td>
-            <td align="right" th:text="${board.writer}"></td>
-            <td align="center" th:text="${#dates.format(board.regDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-            <td align="center" th:text="${#dates.format(board.updDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            <td align="right" th:text="${review.writer}"></td>
+            <td align="center" th:text="${#dates.format(review.regDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            <td align="center" th:text="${#dates.format(review.updDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
          </tr>
       </table>
       
