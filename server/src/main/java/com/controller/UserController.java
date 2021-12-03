@@ -47,8 +47,15 @@ public class UserController {
 
 		if(nowUser != null){
 			final String token = tokenProvider.create(nowUser);
-			final User responseUser = User.builder().email(nowUser.getEmail()).id(nowUser.getId()).token(token).build();
-
+			final User responseUser = User.builder()
+					.email(nowUser.getEmail())
+					.username(nowUser.getUsername())
+					.token(token)
+					.age(nowUser.getAge())
+					.department(nowUser.getDepartment())
+					.nickname(nowUser.getNickname())
+					.rank(nowUser.getRank())
+					.build();
 			return ResponseEntity.ok().body(responseUser);
 		} else {
 			Response response = Response.builder().error("이메일이나 비밀번호를 확인해주세요....").build();
@@ -57,6 +64,4 @@ public class UserController {
 		}
 
 	}
-
-
 }

@@ -1,7 +1,7 @@
 import {signin} from '../api/ApiService';
 import { all, fork, takeEvery, call, put, delay } from 'redux-saga/effects';
 import * as actions from '../reducers/user';
-import {SIGN_IN_FAILURE, SIGN_IN_SUCCESS} from "../reducers/user";
+import {SIGN_IN_FAILURE, SIGN_IN_SUCCESS, SIGN_OUT_FAILURE, SIGN_OUT_SUCCESS} from "../reducers/user";
 
 export const initialState = {
     user: null,
@@ -25,13 +25,34 @@ function* signIn({payload}) {
         });
 
     } catch (err) {
-        alert(err.error);
+        console.log(err);
         yield put({
             type: SIGN_IN_FAILURE,
             error: err.response.data,
         });
     }
 }
+
+function signOutAPI() {
+    // return signout();
+}
+
+function* signOut() {
+    try {
+        // const result = yield call(logOutAPI);
+        yield delay(1000);
+        yield put({
+            type: SIGN_OUT_SUCCESS,
+        });
+    } catch (err) {
+        console.error(err);
+        yield put({
+            type: SIGN_OUT_FAILURE,
+            error: err.response.data,
+        });
+    }
+}
+
 
 function* watchSignIn() {
     yield takeEvery(actions.SIGN_IN_REQUEST, signIn);

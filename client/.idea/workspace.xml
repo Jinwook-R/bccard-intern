@@ -5,6 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/RestaurantController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/Restaurant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/mapper/RestaurantMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/RestaurantService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/RestaurantServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/src/main/resources/com/mapper/RestaurantMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -41,7 +47,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -53,6 +59,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages" />
+      <recent name="$PROJECT_DIR$/sagas" />
       <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/src/pages/login" />
       <recent name="$PROJECT_DIR$/src/pages/home" />
@@ -74,6 +82,7 @@
       <workItem from="1638186657939" duration="518000" />
       <workItem from="1638187207627" duration="6830000" />
       <workItem from="1638335787482" duration="4409000" />
+      <workItem from="1638511306596" duration="7299000" />
     </task>
     <servers />
   </component>

@@ -41,9 +41,11 @@ export const signInRequestAction = data => {
     },
 })};
 
-export const logoutRequestAction = () => ({
-    type: SIGN_OUT_REQUEST,
-});
+export const SignOutRequestAction = () => {
+    return ({
+                type: SIGN_OUT_REQUEST
+            });
+};
 
 export default (state = initialState, action) => {
     const { type, payload, error } = action;

@@ -5,7 +5,13 @@ import Main from "../components/Main";
 import {useSelector} from "react-redux";
 
 const Home = () => {
-    const token = useSelector(state => state.user.me?.token);
+
+    let token = useSelector(state => state.user.me?.token);
+    if(!token){
+        if (typeof window !== 'undefined') {
+            token = localStorage.getItem('ACCESS_TOKEN');
+        }
+    }
 
     return (
         <AppLayout>

@@ -8,27 +8,7 @@ const AppLayout = ({children}) =>{
 
     return (
         <div>
-            <Menu mode="horizontal">
-                <Menu.Item>
-                    <Link href="/"><a>BC로</a></Link>
-                </Menu.Item>
-                {/*<Menu.Item>*/}
-                {/*    <Link href="/profile"><a>프로필</a></Link>*/}
-                {/*</Menu.Item>*/}
-                {/*<Menu.Item>*/}
-                {/*    <Input.Search enterButton style={{ verticalAlign: 'middle'}}/>*/}
-                {/*</Menu.Item>*/}
-                {/*<Menu.Item>*/}
-                {/*    <Link href="/signup"><a>회원가입</a></Link>*/}
-                {/*</Menu.Item>*/}
-            </Menu>
-            <Row gutter={8}>
-                <Col xs={24} md={12}>{children}</Col>
-                <Col xs={24} md={6}></Col>
-                {/*<Col xs={24} md={12}>*/}
-                {/*</Col>*/}
-                <Col xs={24} md={6}></Col>
-            </Row>
+            {children}
         </div>
     );
 };

@@ -5,8 +5,8 @@
 <mapper namespace="com.mapper.UserMapper">
 
 	<insert id="save">
-		INSERT INTO user (id, username, email, password)
-		VALUES (#{id}, #{username}, #{email}, #{password})
+		INSERT INTO user (email, username, department, nickname, rank, age)
+		VALUES (#{email}, #{username}, #{department}, #{nickname}, #{rank}, #{age})
 	</insert>
 
 	<select id="findByEmail" resultType="User">

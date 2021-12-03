@@ -15,9 +15,6 @@ const App = ({Component}) => {
 
     return (
         <>
-            <Head>
-                <title>BC로</title>
-            </Head>
             <Component/>
         </>
     );
