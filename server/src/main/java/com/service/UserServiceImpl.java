@@ -23,7 +23,6 @@ public class UserServiceImpl implements UserService {
 		if(userMapper.findByEmail(email) != null){
 			throw new RuntimeException("Email already exists");
 		}
-
 		return userMapper.save(user);
 	}
 

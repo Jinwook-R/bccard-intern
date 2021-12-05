@@ -1,5 +1,5 @@
 export const initialState = {
-    restaurant: null, // 음식점 정보
+    restaurantList: null, // 음식점 정보
 };
 
 // Action types
@@ -14,7 +14,7 @@ export const restaurantListRequestAction = data => ({
 
 export default (state = initialState, action) => {
     const { type, payload, error } = action;
-    console.log(type, payload, error,'?');
+
     switch (type) {
         case RESTAURANT_LIST_REQUEST: {
             return {
@@ -24,6 +24,7 @@ export default (state = initialState, action) => {
         case RESTAURANT_LIST_SUCCESS: {
             return {
                 ...state,
+                restaurantList: payload
             };
         }
         case RESTAURANT_LIST_FAILURE: {

@@ -6,15 +6,10 @@ import lombok.Data;
 @Data
 @Builder
 public class Restaurant {
-
-    private String token;
-
     private String id;
-
-    private String username;
-
-    private String email;
-
-    private String password;
-
+    private String name;
+    private String url;
+    private String lat;
+    private String lng;
+    private String type;
 }

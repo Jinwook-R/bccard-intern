@@ -9,7 +9,6 @@ const ErrorMessage = styled.div`
 `;
 
 const Signup = () => {
-
     const [id, onChangeId] = useInput('');
     const [nickname, onChangeNickname] = useInput('');
     const [password, onChangePassword] = useInput('');
@@ -19,15 +18,13 @@ const Signup = () => {
     const [term, setTerm] = useState('');
     const [termError, setTermError] = useState(false);
 
-    const onChangeTerm = useCallback((e)=>{
+    const onChangeTerm = useCallback((e) => {
         setTerm(e.target.checked);
         setTermError(false);
-    },[])
+    },[]);
 
-    const onChangePasswordCheck = useCallback((e)=>{
+    const onChangePasswordCheck = useCallback((e) => {
         setPasswordCheck(e.target.value);
-
-        console.log(e.target.value !== password);
         setPasswordError(e.target.value !== password);
     }, []);
 
@@ -51,24 +48,23 @@ const Signup = () => {
                     <Input name="user-id" value={id} required onChange={onChangeId}></Input>
                 </div>
                 <div>
-                    <label htmlFor="user-nick">닉네임</label>
+                    <label htmlFor="nickname">닉네임</label>
                     <br/>
-                    <Input name="user-nick" value={nickname} required onChange={onChangeNickname}></Input>
+                    <Input name="nickname" value={nickname} required onChange={onChangeNickname}></Input>
                 </div>
                 <div>
-                    <label htmlFor="user-password">비밀번호</label>
+                    <label htmlFor="password">비밀번호</label>
                     <br/>
-                    <Input name="user-password" type="password" value={password} required onChange={onChangePassword}></Input>
+                    <Input name="password" type="password" value={password} required onChange={onChangePassword}></Input>
                 </div>
                 <div>
-                    <label htmlFor="user-password-check">비밀번호 체크</label>
+                    <label htmlFor="password-check">비밀번호 체크</label>
                     <br/>
-                    <Input name="user-password-check" type="password" value={passwordCheck} required onChange={onChangePasswordCheck}></Input>
+                    <Input name="password-check" type="password" value={passwordCheck} required onChange={onChangePasswordCheck}></Input>
                     {passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다..</ErrorMessage>}
                 </div>
-
                 <div>
-                    <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>개인정보 수집에 동의합니다.</Checkbox>
+                    <Checkbox name="term" checked={term} onChange={onChangeTerm}>개인정보 수집에 동의합니다.</Checkbox>
                     {termError && <ErrorMessage>약관에 동의하셔야 합니다.</ErrorMessage>}
                 </div>
                 <div style={{marginTop:10}}>
@@ -76,7 +72,7 @@ const Signup = () => {
                 </div>
             </Form>
         </AppLayout>
-    )
+    );
 }
 
 export default Signup;

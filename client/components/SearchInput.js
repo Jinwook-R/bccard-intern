@@ -1,21 +1,51 @@
-import * as React from 'react';
-import Search from "antd/lib/input/Search";
-import styled from "styled-components";
-import {Input} from "antd";
+import React, { useState } from 'react';
+import {AutoComplete, Button, Col, Row} from 'antd';
+import {useSelector} from "react-redux";
+import {SearchOutlined} from "@ant-design/icons";
+import Link from "next/link";
+const { Option } = AutoComplete;
 
-const StyledSearchInput = styled.div`
+const SearchInput = () => {
+    const [searchName, setSearchName] = useState("");
+    const [result, setResult] = useState([]);
+    const restaurantList = useSelector(state => state.restaurant.restaurantList);
 
-`;
+    const handleSearch = (value) => {
+        const res = restaurantList
+            .filter((restaurant) => restaurant.name.includes(value+""))
+            .map((restaurant)=> restaurant.name);
+        setResult(res);
+        setSearchName(value);
+    };
 
-export const SearchInput = () => {
-
-    const onSearchInput = () => {
-        
-    }
+    const handleClickSearchButton = (e) => {
+        console.log(searchName);
+    };
 
     return (
-        <StyledSearchInput>
-            <Input.Search onSearch={onSearchInput} placeholder="지역, 식당 또는 음식" enterButton style={{ height:'100px', verticalAlign: 'middle'}}/>
-        </StyledSearchInput>
+        <div style={{display:"flex"}}>
+            <AutoComplete
+                dropdownMatchSelectWidth={252}
+                style={{
+                    width: "100%"
+                }}
+                onSearch={handleSearch}
+            >
+                {result.map((name, idx) => (
+                    <Option key={idx} value={name}>
+                        {name}
+                    </Option>
+                ))}
+            </AutoComplete>
+            <Link href={{
+                pathname: '/restaurant',
+                query: { id:'123'},
+            }}>
+                <Button style={{"marginLeft":"5px"}} size={"medium"} onClick={handleClickSearchButton}><SearchOutlined/></Button>
+            </Link>
+        </div>
     );
 };
+
+export default SearchInput;
+

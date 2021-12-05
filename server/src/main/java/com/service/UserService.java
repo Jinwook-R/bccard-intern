@@ -9,7 +9,7 @@ public interface UserService {
 	public User getByCredentials(String email, String password);
 
 //	public Boolean existsByEmail(String email) throws Exception;
-//
+
 //	public User findByEmailAndPassword(String email, String password) throws Exception;
 
 }

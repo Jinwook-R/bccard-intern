@@ -24,7 +24,7 @@ public class RestaurantController {
 	private RestaurantService restaurantService;
 
 	@GetMapping("/list")
-	public ResponseEntity<?> restaurantList(@RequestBody User user){
+	public ResponseEntity<?> restaurantList(){
 
 		ArrayList<Restaurant> responseRestaurant = new ArrayList<>();
 

@@ -15,10 +15,5 @@ public class Review { //DTO
 	private String content;
 	private Date regDate;
 	private Date updDate;
-	
 	private MultipartFile[] file;
-	
-	
-	
-	
 }

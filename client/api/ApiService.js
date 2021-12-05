@@ -30,7 +30,8 @@ function call(api, method, data){
     );
 }
 
-export function signin(user){
+export function signin(user) {
+
     return call("/auth/signin", "POST", user)
         .then((response) => {
             console.log("response: ", response);
@@ -45,12 +46,15 @@ export function signout() {
     localStorage.setItem("ACCESS_TOKEN", null);
 }
 
-export function restaurantlist(){
-    return call("/restaurant/list", "GET", user)
+export function signup() {
+
+}
+
+export function restaurantlist() {
+    return call("/restaurant/list", "GET")
         .then((response) => {
-            console.log("response: ", response);
-            if(response.token){
-                localStorage.setItem("ACCESS_TOKEN", response.token);
+            if(response){
+                console.log("response: ", response);
             }
             return response;
         });

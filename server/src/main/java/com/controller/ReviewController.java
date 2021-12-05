@@ -74,7 +74,6 @@ public class ReviewController {
 		model.addAttribute("msg", msg);
 		
 		return "board/success";
-	
 	}
 
 	@PostMapping("/delete")

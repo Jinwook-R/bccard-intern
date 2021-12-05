@@ -15,13 +15,18 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 	@Override
 	public ArrayList<Restaurant> list() {
+
 		ArrayList<Restaurant> restaurants = null;
+
 		try {
 			restaurants =  mapper.list();
-		}catch (Exception e){
+		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 
+		System.out.println(restaurants+"!!!!!!!!!!!!!!");
+
 		return restaurants;
+
 	}
 }

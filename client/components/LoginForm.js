@@ -5,7 +5,6 @@ import useInput from "../hooks/useInput";
 import styled from 'styled-components';
 import {useDispatch} from "react-redux";
 import {useCallback} from "react";
-
 import {signInRequestAction} from '../reducers/user'
 
 const StyledLoginForm = styled.div`
@@ -19,12 +18,11 @@ const LoginForm = () => {
     const dispatch = useDispatch();
 
     const onSubmitForm = useCallback( (e) => {
-
         dispatch(signInRequestAction({
             email:id,
             password,
         }));
-    },[id,password]);
+    },[id, password]);
 
     return (
         <StyledLoginForm>

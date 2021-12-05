@@ -49,7 +49,6 @@ export const SignOutRequestAction = () => {
 
 export default (state = initialState, action) => {
     const { type, payload, error } = action;
-    console.log(type, payload, error,'?');
     switch (type) {
         case SIGN_UP_REQUEST: {
             return {
