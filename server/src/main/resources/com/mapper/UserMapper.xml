@@ -5,7 +5,7 @@
 <mapper namespace="com.mapper.UserMapper">
 
 	<insert id="save">
-		INSERT INTO user (email, username, department, nickname, rank, age)
+		INSERT INTO user (email, username, department, nickname, rank_type, age)
 		VALUES (#{email}, #{username}, #{department}, #{nickname}, #{rank}, #{age})
 	</insert>
 

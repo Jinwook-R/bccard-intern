@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 @Builder
 public class User {
-
     private String token;
     private String id;
     private String username;
@@ -14,5 +13,5 @@ public class User {
     private int age;
     private String department;
     private String nickname;
-    private String rank;
+    private String rank_type;
 }

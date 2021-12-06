@@ -24,9 +24,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 			System.out.println(e.getMessage());
 		}
 
-		System.out.println(restaurants+"!!!!!!!!!!!!!!");
-
 		return restaurants;
 
 	}
+
+
 }

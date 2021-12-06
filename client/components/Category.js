@@ -3,12 +3,11 @@ import {Card,Row, Col} from 'antd';
 import Link from "next/link";
 import {useSelector} from "react-redux";
 
-export const Category = ({title}) => {
-    const { Meta } = Card;
+export const Category = ({title, type}) => {
+    const {Meta} = Card;
 
     let restaurantList = useSelector(state => state.restaurant.restaurantList);
-
-    console.log('restaurantList: ',restaurantList);
+    let count = 0;
 
     const handleCardClick = () => {
 
@@ -17,38 +16,70 @@ export const Category = ({title}) => {
     return (
         <>
             <h2>{title}</h2>
-            <Row gutter={[10,10]} style={{width:"100%"}}>
+            {!type && <Row gutter={[10, 10]} style={{width: "100%"}}>
                 {
-                    restaurantList?.map((e,idx)=>{
-                        if(idx < 6){
+                    restaurantList?.map((e, idx) => {
+                        if (idx < 6) {
 
                             return (<Col xs={24} md={12} lg={8}>
                                 <Link href={{
                                     pathname: '/restaurant',
-                                    query: { id: e.id},
+                                    query: {id: e.id},
                                 }}
                                 >
                                     <a>
                                         <Card
                                             hoverable
-                                            cover={<img alt="example" src="https://news.kbs.co.kr/data/news/2017/01/04/3405677_bH6.jpg"
+                                            cover={<img alt="example"
+                                                        src="https://news.kbs.co.kr/data/news/2017/01/04/3405677_bH6.jpg"
                                                         onClick={handleCardClick}
                                             />}
                                         >
-                                            <Meta title={e.name} description="www.aslwdf.com" />
+                                            <Meta title={e.name} description="www.aslwdf.com"/>
                                         </Card>
                                     </a>
                                 </Link>
                             </Col>);
 
-                        }else{
+                        } else {
                             return null;
                         }
                     })
-
                 }
-
             </Row>
+            }
+            {type && <Row gutter={[10, 10]} style={{width: "100%"}}>
+                {
+                    restaurantList?.map((e, idx) => {
+                        if (count < 6 && e.type === type) {
+                            return (<Col xs={24} md={12} lg={8}>
+                                <Link href={{
+                                    pathname: '/restaurant',
+                                    query: {id: e.id},
+                                }}
+                                >
+                                    <a>
+                                        <Card
+                                            hoverable
+                                            cover={<img alt="example"
+                                                        src="https://news.kbs.co.kr/data/news/2017/01/04/3405677_bH6.jpg"
+                                                        onClick={handleCardClick}
+                                            />}
+                                        >
+                                            <Meta title={e.name} description="www.aslwdf.com"/>
+                                        </Card>
+                                    </a>
+                                </Link>
+                            </Col>);
+
+                        } else {
+                            return null;
+                        }
+                    })
+                }
+            </Row>
+            }
+
         </>
     );
 }

@@ -37,13 +37,12 @@ public class UserController {
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticate(@RequestBody User user) {
-
 		User nowUser = userService.getByCredentials(
 				user.getEmail(),
 				user.getPassword()
 		);
 
-		if(nowUser != null){
+		if(nowUser != null) {
 			final String token = tokenProvider.create(nowUser);
 			final User responseUser = User.builder()
 					.email(nowUser.getEmail())
@@ -52,13 +51,12 @@ public class UserController {
 					.age(nowUser.getAge())
 					.department(nowUser.getDepartment())
 					.nickname(nowUser.getNickname())
-					.rank(nowUser.getRank())
+					.rank_type(nowUser.getRank_type())
 					.build();
 			return ResponseEntity.ok().body(responseUser);
 		} else {
 			Response response = Response.builder().error("이메일이나 비밀번호를 확인해주세요....").build();
 			return ResponseEntity.badRequest().body(response);
 		}
-
 	}
 }

@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {Badge, Button, Card, Descriptions, Image, List} from 'antd';
 import {HighlightOutlined} from "@ant-design/icons";
 import Avatar from "antd/es/avatar/avatar";
+import Link from "next/link";
 
 
 function ImageDemo() {
@@ -67,7 +68,18 @@ const Restaurant = ({ router: { query } }) => {
             />
             <Descriptions style={{display:'inline-block', width:'500px'}} size="middle" title={name} bordered>
                 <Descriptions.Item label="주소" span={2}>Cloud Database</Descriptions.Item>
-                <Descriptions.Item span={1}><Button><HighlightOutlined /></Button></Descriptions.Item>
+                <Descriptions.Item span={1}>
+                    <Link
+                        href={{
+                            pathname: '/reviewRegister',
+                            query: {id: query.id},
+                        }}
+                    >
+                        <Button>
+                            <HighlightOutlined />
+                        </Button>
+                    </Link>
+                </Descriptions.Item>
                 <Descriptions.Item label="전화번호" span={3}>Prepaid</Descriptions.Item>
                 <Descriptions.Item label="음식 종류" span={3}>YES</Descriptions.Item>
                 <Descriptions.Item label="가격대" span={3}>2018-04-24 18:00:00</Descriptions.Item>
@@ -105,7 +117,6 @@ const Restaurant = ({ router: { query } }) => {
                     </List.Item>
                 )}
             />
-
         </AppLayout>
     );
 };

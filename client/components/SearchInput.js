@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import {AutoComplete, Button, Col, Row} from 'antd';
+import {AutoComplete, Button} from 'antd';
 import {useSelector} from "react-redux";
 import {SearchOutlined} from "@ant-design/icons";
 import Link from "next/link";
 const { Option } = AutoComplete;
 
 const SearchInput = () => {
+
     const [searchName, setSearchName] = useState("");
     const [result, setResult] = useState([]);
     const restaurantList = useSelector(state => state.restaurant.restaurantList);
@@ -18,9 +19,9 @@ const SearchInput = () => {
         setSearchName(value);
     };
 
-    const handleClickSearchButton = (e) => {
-        console.log(searchName);
-    };
+    const handleChange = (value) => {
+        setSearchName(value);
+    }
 
     return (
         <div style={{display:"flex"}}>
@@ -29,6 +30,7 @@ const SearchInput = () => {
                 style={{
                     width: "100%"
                 }}
+                onChange={handleChange}
                 onSearch={handleSearch}
             >
                 {result.map((name, idx) => (
@@ -38,10 +40,10 @@ const SearchInput = () => {
                 ))}
             </AutoComplete>
             <Link href={{
-                pathname: '/restaurant',
-                query: { id:'123'},
+                pathname: '/search',
+                query: {name:searchName},
             }}>
-                <Button style={{"marginLeft":"5px"}} size={"medium"} onClick={handleClickSearchButton}><SearchOutlined/></Button>
+                <Button style={{"marginLeft":"5px"}} size={"medium"}><SearchOutlined/></Button>
             </Link>
         </div>
     );

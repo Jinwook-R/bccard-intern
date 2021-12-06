@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/RestaurantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/RestaurantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/ReviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/domain/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/Restaurant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/Review.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/mapper/RestaurantMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/mapper/RestaurantMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/RestaurantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/RestaurantServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/ReviewServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/com/mapper/RestaurantMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/com/mapper/RestaurantMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +81,7 @@
       <workItem from="1638576755587" duration="18780000" />
       <workItem from="1638611893006" duration="23746000" />
       <workItem from="1638712030609" duration="1661000" />
+      <workItem from="1638782543777" duration="8942000" />
     </task>
     <servers />
   </component>

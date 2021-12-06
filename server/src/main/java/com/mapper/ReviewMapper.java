@@ -2,6 +2,7 @@ package com.mapper;
 
 import java.util.List;
 
+import com.domain.FileInfo;
 import com.domain.Review;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -20,4 +21,5 @@ public interface ReviewMapper {
 
 	public List<Review> search(String keyword) throws Exception;
 
+	public void uploadFile(FileInfo fileInfo) throws Exception;
 }

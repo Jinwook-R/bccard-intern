@@ -12,6 +12,8 @@ const Signup = () => {
     const [id, onChangeId] = useInput('');
     const [nickname, onChangeNickname] = useInput('');
     const [password, onChangePassword] = useInput('');
+    const [username, onChangeUsername] = useInput('');
+
     const [passwordCheck, setPasswordCheck] = useState('');
     const [passwordError, setPasswordError] = useState(false);
 
@@ -48,6 +50,11 @@ const Signup = () => {
                     <Input name="user-id" value={id} required onChange={onChangeId}></Input>
                 </div>
                 <div>
+                    <label htmlFor="username">이름</label>
+                    <br/>
+                    <Input name="username" value={username} required onChange={onChangeUsername}></Input>
+                </div>
+                <div>
                     <label htmlFor="nickname">닉네임</label>
                     <br/>
                     <Input name="nickname" value={nickname} required onChange={onChangeNickname}></Input>
@@ -62,6 +69,11 @@ const Signup = () => {
                     <br/>
                     <Input name="password-check" type="password" value={passwordCheck} required onChange={onChangePasswordCheck}></Input>
                     {passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다..</ErrorMessage>}
+                </div>
+                <div>
+                    <label>부서</label>
+                    <br/>
+                    <Input name="department" value={password} required onChange={onChangePassword}></Input>
                 </div>
                 <div>
                     <Checkbox name="term" checked={term} onChange={onChangeTerm}>개인정보 수집에 동의합니다.</Checkbox>

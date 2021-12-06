@@ -3,9 +3,17 @@ import PropTypes from 'prop-types';
 import {Menu} from "antd";
 import Link from "next/link";
 import {SignOutRequestAction} from "../reducers/user";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const AppLayout = ({children}) =>{
+
+    let token = useSelector(state => state.user.me?.token);
+    if(!token){
+        if (typeof window !== 'undefined') {
+            token = localStorage.getItem('ACCESS_TOKEN');
+        }
+    }
+
     const dispatch = useDispatch();
     const handleLogout = () => {
         localStorage.clear();
@@ -14,10 +22,11 @@ const AppLayout = ({children}) =>{
     }
 
     return (
-        <div>
+        <div>{
+            token &&
             <Menu mode="horizontal">
                 <Menu.Item>
-                    <Link href="/"><h1>을지로</h1></Link>
+                    <Link href="/"><h1>BC로</h1></Link>
                 </Menu.Item>
                 <Menu.Item>
                     <Link href="/profile"><a>마이페이지</a></Link>
@@ -29,6 +38,7 @@ const AppLayout = ({children}) =>{
                     <a onClick={handleLogout}>로그아웃</a>
                 </Menu.Item>
             </Menu>
+            }
             {children}
         </div>
     );

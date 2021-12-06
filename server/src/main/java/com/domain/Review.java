@@ -7,8 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 
 @Data
-public class Review { //DTO
-	
+public class Review {
 	private int boardNo;
 	private String title;
 	private String writer;
