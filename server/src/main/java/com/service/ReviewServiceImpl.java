@@ -62,15 +62,15 @@ public class ReviewServiceImpl implements ReviewService {
 
 	public void fileUpload(Review board) throws Exception {
 
-		MultipartFile[] files = board.getFile();
-
-		List<FileInfo> fileList = fileUtils.uploadFiles(files, uploadPath);
-
-		for(FileInfo fileInfo : fileList) {
-			int boardNo = board.getBoardNo();
-			fileInfo.setRefNo(boardNo);
-			mapper.uploadFile(fileInfo);
-		}
+//		MultipartFile[] files = board.getFile();
+//
+//		List<FileInfo> fileList = fileUtils.uploadFiles(files, uploadPath);
+//
+//		for(FileInfo fileInfo : fileList) {
+//			int boardNo = board.getBoardNo();
+//			fileInfo.setRefNo(boardNo);
+//			mapper.uploadFile(fileInfo);
+//		}
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.domain;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Data

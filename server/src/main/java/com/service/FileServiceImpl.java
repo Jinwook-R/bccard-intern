@@ -16,8 +16,8 @@ public class FileServiceImpl implements FileService {
 	private FileMapper mapper;
 
 	@Override
-	public List<FileInfo> fileList(Integer refNo) throws Exception {
-		return mapper.fileList(refNo);
+	public List<FileInfo> fileList(String refNo) {
+		return null;
 	}
 
 	@Override

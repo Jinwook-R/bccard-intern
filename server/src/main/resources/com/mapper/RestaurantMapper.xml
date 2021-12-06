@@ -5,7 +5,12 @@
 <mapper namespace="com.mapper.RestaurantMapper">
 	<select id="list" resultType="Restaurant">
 		SELECT *
- 	      FROM RESTAURANT
+ 	      FROM restaurant
 	</select>
 
+	<select id="restaurantFileList" resultType="FileInfo">
+		SELECT *
+		FROM restaurant_file
+		WHERE ref_no = #{refNo}
+	</select>
 </mapper>
