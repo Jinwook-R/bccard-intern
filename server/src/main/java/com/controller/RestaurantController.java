@@ -7,17 +7,17 @@ import com.domain.User;
 import com.security.TokenProvider;
 import com.service.FileService;
 import com.service.RestaurantService;
-import com.service.ReviewService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -26,9 +26,6 @@ public class RestaurantController {
 	
 	@Autowired
 	private RestaurantService restaurantService;
-
-	@Autowired
-	private FileService fileService;
 
 	@GetMapping("/list")
 	public ResponseEntity<?> restaurantList() throws Exception {
@@ -41,15 +38,11 @@ public class RestaurantController {
 			log.info(e.getMessage());
 		}
 
-		List<FileInfo> fileList = null;
-
-		for(Restaurant e : responseRestaurant) {
-			fileList =  restaurantService.restaurantFileList(e.getId());
-			System.out.println(fileList);
-
+		for(int i = 0 ; i < responseRestaurant.size() ; i++){
+			Restaurant now = responseRestaurant.get(i);
+			now.setFileInfoList(restaurantService.restaurantFileList(now.getId()));
+			responseRestaurant.set(i, now);
 		}
-
-
 
 		return ResponseEntity.ok().body(responseRestaurant);
 	}

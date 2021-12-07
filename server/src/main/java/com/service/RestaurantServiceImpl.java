@@ -29,7 +29,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public List<FileInfo> restaurantFileList(String refNo) throws Exception {
+	public List<FileInfo> restaurantFileList(Integer refNo) throws Exception {
 		return mapper.restaurantFileList(refNo);
+	}
+
+	@Override
+	public FileInfo restaurantReadFile(Integer refNo) throws Exception {
+		return mapper.restaurantReadFile(refNo);
 	}
 }

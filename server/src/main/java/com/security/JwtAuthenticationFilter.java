@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.util.StringUtils;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @Slf4j
 @Component
@@ -28,10 +28,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        try{
+        String path = ((HttpServletRequest) request).getServletPath();
+
+        try {
             String token = parseBearerToken(request);
 
-            if(token != null && !token.equalsIgnoreCase("null")){
+            if(token != null && !token.equalsIgnoreCase("null")) {
 
                 String userId = tokenProvider.validateAndGetUserId(token);
 
@@ -42,16 +44,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 );
 
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
                 SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
                 securityContext.setAuthentication(authentication);
                 SecurityContextHolder.setContext(securityContext);
             }
+
         }catch (Exception ex){
             logger.error("Could not set user authentication in security context", ex);
         }
-
-        filterChain.doFilter(request, response);
+        if(!path.contains("img")) {
+            filterChain.doFilter(request, response);
+        }else {
+            request.getRequestDispatcher( path).forward(request, response);
+        }
     }
 
     private String parseBearerToken(HttpServletRequest request){
@@ -64,3 +69,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         return null;
     }
 }
+

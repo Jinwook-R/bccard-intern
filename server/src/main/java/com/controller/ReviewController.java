@@ -24,7 +24,7 @@ public class ReviewController {
 	public void list(Model model, String keyword) throws Exception {
 //		List<Board> list = service.list(keyword);
 //		model.addAttribute("list", list);
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	}
 
 	@PostMapping("/insert")

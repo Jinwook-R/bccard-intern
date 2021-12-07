@@ -11,6 +11,8 @@ public interface RestaurantService {
 
 	public ArrayList<Restaurant> list();
 
-	public List<FileInfo> restaurantFileList(String refNo) throws Exception;
+	public List<FileInfo> restaurantFileList(Integer refNo) throws Exception;
+
+	public FileInfo restaurantReadFile(Integer refNo) throws Exception;
 
 }

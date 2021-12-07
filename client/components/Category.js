@@ -2,12 +2,16 @@ import * as React from 'react';
 import {Card,Row, Col} from 'antd';
 import Link from "next/link";
 import {useSelector} from "react-redux";
+import {API_BASE_URL} from "../api/config";
+import {imageCall} from '../api/ApiService';
+
 
 export const Category = ({title, type}) => {
     const {Meta} = Card;
 
     let restaurantList = useSelector(state => state.restaurant.restaurantList);
     let count = 0;
+
 
     const handleCardClick = () => {
 
@@ -19,6 +23,7 @@ export const Category = ({title, type}) => {
             {!type && <Row gutter={[10, 10]} style={{width: "100%"}}>
                 {
                     restaurantList?.map((e, idx) => {
+
                         if (idx < 6) {
 
                             return (<Col xs={24} md={12} lg={8}>
@@ -30,12 +35,13 @@ export const Category = ({title, type}) => {
                                     <a>
                                         <Card
                                             hoverable
-                                            cover={<img alt="example"
-                                                        src="https://news.kbs.co.kr/data/news/2017/01/04/3405677_bH6.jpg"
-                                                        onClick={handleCardClick}
-                                            />}
+                                            cover={ e.fileInfoList[0]?.fileNo &&
+                                                <img style={{height:'300px'}}
+                                                     src={API_BASE_URL + `/file/restaurant/img?fileNo=${e.fileInfoList[0]?.fileNo}`}
+                                                     onClick={handleCardClick}
+                                                />}
                                         >
-                                            <Meta title={e.name} description="www.aslwdf.com"/>
+                                            <Meta title={e.name} description="www.naver.com"/>
                                         </Card>
                                     </a>
                                 </Link>

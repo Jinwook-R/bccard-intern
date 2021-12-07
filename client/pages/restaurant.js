@@ -8,7 +8,6 @@ import {HighlightOutlined} from "@ant-design/icons";
 import Avatar from "antd/es/avatar/avatar";
 import Link from "next/link";
 
-
 function ImageDemo() {
     return (
         <Image
@@ -51,9 +50,9 @@ const Restaurant = ({ router: { query } }) => {
 
     let restaurantList = useSelector(state => state.restaurant.restaurantList);
 
-    console.log(restaurantList.filter((e)=> e.id === query.id));
 
-    const {lat, lng, name} = restaurantList.filter((e)=> e.id === query.id)[0];
+    console.log(restaurantList);
+    const {lat, lng, name, tel, type} = restaurantList.filter((e)=> e.id == query.id)[0];
 
     return (
         <AppLayout>
@@ -80,8 +79,8 @@ const Restaurant = ({ router: { query } }) => {
                         </Button>
                     </Link>
                 </Descriptions.Item>
-                <Descriptions.Item label="전화번호" span={3}>Prepaid</Descriptions.Item>
-                <Descriptions.Item label="음식 종류" span={3}>YES</Descriptions.Item>
+                <Descriptions.Item label="전화번호" span={3}>{tel}</Descriptions.Item>
+                <Descriptions.Item label="음식 종류" span={3}>{type}</Descriptions.Item>
                 <Descriptions.Item label="가격대" span={3}>2018-04-24 18:00:00</Descriptions.Item>
                 <Descriptions.Item label="주차" span={3}>
                     2019-04-24 18:00:00

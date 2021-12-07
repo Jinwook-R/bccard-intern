@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface RestaurantMapper {
-	public ArrayList<Restaurant> list() throws Exception;
-	List<FileInfo> restaurantFileList(String refNo);
+	ArrayList<Restaurant> list() throws Exception;
+	List<FileInfo> restaurantFileList(Integer refNo);
+	FileInfo restaurantReadFile(Integer refNo) throws Exception;
 }
