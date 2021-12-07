@@ -25,7 +25,6 @@ export const SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST';
 export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
 export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE';
 
-// Actions creators
 export const signUpRequestAction = data => ({
     type: SIGN_UP_REQUEST,
     payload: {

@@ -1,18 +1,45 @@
 import React, {useCallback, useState} from 'react';
-import AppLayout from "../components/AppLayout";
 import {Button, Checkbox, Form, Input} from "antd";
 import useInput from "../hooks/useInput";
 import styled from "styled-components";
+import {signUpRequestAction} from "../reducers/user";
+import {useDispatch} from "react-redux";
 
 const ErrorMessage = styled.div`
   color:red;
 `;
 
+const StyledSignup = styled.div`
+  margin: 10px auto;
+  width: 500px;
+`;
+
+const StyledButton = styled(Button)`
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  font: 20px bold;
+`;
+
+const StyledLabel = styled.label`
+  font-weight: bold;
+`;
+
+const StyledInput = styled(Input)`
+  height: 40px;
+`;
+
+
 const Signup = () => {
+
+    const dispatch = useDispatch();
+
     const [id, onChangeId] = useInput('');
-    const [nickname, onChangeNickname] = useInput('');
-    const [password, onChangePassword] = useInput('');
     const [username, onChangeUsername] = useInput('');
+    const [department, onChangeDepartment] = useInput('');
+    const [rankType, onChangeRankType] = useInput('');
+
+    const [password, onChangePassword] = useInput('');
 
     const [passwordCheck, setPasswordCheck] = useState('');
     const [passwordError, setPasswordError] = useState(false);
@@ -25,65 +52,75 @@ const Signup = () => {
         setTermError(false);
     },[]);
 
+
     const onChangePasswordCheck = useCallback((e) => {
-        setPasswordCheck(e.target.value);
         setPasswordError(e.target.value !== password);
+        setPasswordCheck(e.target.value);
     }, []);
 
     const onSubmit = useCallback(() => {
-        if(password !== passwordCheck){
+
+        if(password !== passwordCheck) {
             return setPasswordError(true);
         }
-        if(!term){
+
+        if(!term) {
             return setTermError(true);
         }
-        console.log(id, nickname, password);
+
+        dispatch(signUpRequestAction({
+            id,
+            password,
+            username,
+            department,
+            rank_type: rankType
+        }));
     },[password, passwordCheck, term]);
 
     return (
-        <AppLayout>
-            <div>회원가입 페이지</div>
+        <StyledSignup>
+            <p style={{textAlign: "center", font: "30px bold", marginTop:"50px"}}>회원가입</p>
             <Form onFinish={onSubmit}>
                 <div>
-                    <label htmlFor="user-id">아이디</label>
+                    <StyledLabel htmlFor="user-id">아이디</StyledLabel>
                     <br/>
-                    <Input name="user-id" value={id} required onChange={onChangeId}></Input>
+                    <StyledInput name="user-id" value={id} required onChange={onChangeId}></StyledInput>
                 </div>
                 <div>
-                    <label htmlFor="username">이름</label>
+                    <StyledLabel htmlFor="username">이름</StyledLabel>
                     <br/>
-                    <Input name="username" value={username} required onChange={onChangeUsername}></Input>
+                    <StyledInput name="username" value={username} required onChange={onChangeUsername}></StyledInput>
                 </div>
                 <div>
-                    <label htmlFor="nickname">닉네임</label>
+                    <StyledLabel htmlFor="password">비밀번호</StyledLabel>
                     <br/>
-                    <Input name="nickname" value={nickname} required onChange={onChangeNickname}></Input>
+                    <StyledInput name="password" type="password" value={password} required onChange={onChangePassword}></StyledInput>
                 </div>
                 <div>
-                    <label htmlFor="password">비밀번호</label>
+                    <StyledLabel htmlFor="password-check">비밀번호 체크</StyledLabel>
                     <br/>
-                    <Input name="password" type="password" value={password} required onChange={onChangePassword}></Input>
-                </div>
-                <div>
-                    <label htmlFor="password-check">비밀번호 체크</label>
-                    <br/>
-                    <Input name="password-check" type="password" value={passwordCheck} required onChange={onChangePasswordCheck}></Input>
+                    <StyledInput name="password-check" type="password" value={passwordCheck} required onChange={onChangePasswordCheck}></StyledInput>
                     {passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다..</ErrorMessage>}
                 </div>
                 <div>
-                    <label>부서</label>
+                    <StyledLabel>부서</StyledLabel>
                     <br/>
-                    <Input name="department" value={password} required onChange={onChangePassword}></Input>
+                    <StyledInput name="department" value={department} required onChange={onChangeDepartment}></StyledInput>
+                </div>
+                <div>
+                    <StyledLabel>직책</StyledLabel>
+                    <br/>
+                    <StyledInput name="rank_type" value={rankType} required onChange={onChangeRankType}></StyledInput>
                 </div>
                 <div>
                     <Checkbox name="term" checked={term} onChange={onChangeTerm}>개인정보 수집에 동의합니다.</Checkbox>
                     {termError && <ErrorMessage>약관에 동의하셔야 합니다.</ErrorMessage>}
                 </div>
                 <div style={{marginTop:10}}>
-                    <Button type="primary" htmlType="submit">가입하기</Button>
+                    <StyledButton type="primary" htmlType="submit">가입하기</StyledButton>
                 </div>
             </Form>
-        </AppLayout>
+        </StyledSignup>
     );
 }
 

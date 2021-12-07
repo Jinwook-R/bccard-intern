@@ -25,10 +25,12 @@ public class UserController {
 	private TokenProvider tokenProvider;
 
 	@PostMapping("/signup")
-	public ResponseEntity<?> registerUser(@RequestBody User user){
+	public ResponseEntity<?> registerUser(@RequestBody User user) {
 		User responseUser = null;
+
+		System.out.println(user.toString());
 		try {
-			responseUser = userService.save(user);
+			userService.save(user);
 		} catch(Exception e) {
 			log.info(e.getMessage());
 		}
@@ -38,19 +40,16 @@ public class UserController {
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticate(@RequestBody User user) {
 		User nowUser = userService.getByCredentials(
-				user.getEmail(),
+				user.getId(),
 				user.getPassword()
 		);
 
 		if(nowUser != null) {
 			final String token = tokenProvider.create(nowUser);
 			final User responseUser = User.builder()
-					.email(nowUser.getEmail())
 					.username(nowUser.getUsername())
 					.token(token)
-					.age(nowUser.getAge())
 					.department(nowUser.getDepartment())
-					.nickname(nowUser.getNickname())
 					.rank_type(nowUser.getRank_type())
 					.build();
 			return ResponseEntity.ok().body(responseUser);

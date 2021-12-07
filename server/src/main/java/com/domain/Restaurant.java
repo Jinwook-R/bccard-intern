@@ -14,6 +14,8 @@ public class Restaurant {
 
     private Integer id;
     private String name;
+    private String address;
+    private String tel;
     private String lat;
     private String lng;
     private String type;

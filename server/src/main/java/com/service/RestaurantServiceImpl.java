@@ -25,6 +25,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+
 		return restaurants;
 	}
 

@@ -12,37 +12,23 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
-	public User save(User user) {
+	public void save(User user) {
 
-		if(user == null || user.getEmail() == null){
+		if(user == null || user.getId() == null || user.getPassword() == null || user.getDepartment() == null || user.getRank_type() == null){
 			throw new RuntimeException("Invalid arguments");
 		}
 
-		final String email = user.getEmail();
+		final String id = user.getId();
 
-		if(userMapper.findByEmail(email) != null){
-			throw new RuntimeException("Email already exists");
+		if(userMapper.findById(id) != null){
+			throw new RuntimeException("ID already exists");
 		}
-		return userMapper.save(user);
+
+		userMapper.save(user);
 	}
 
 	@Override
-	public User getByCredentials(String email, String password) {
-		return userMapper.findByEmailAndPassword(email, password);
+	public User getByCredentials(String id, String password) {
+		return userMapper.findByIdAndPassword(id, password);
 	}
-
-//	@Override
-//	public User findByEmail(String email) throws Exception {
-//		return null;
-//	}
-//
-//	@Override
-//	public Boolean existsByEmail(String email) throws Exception {
-//		return null;
-//	}
-//
-//	@Override
-//	public User findByEmailAndPassword(String email, String password) throws Exception {
-//		return null;
-//	}
 }

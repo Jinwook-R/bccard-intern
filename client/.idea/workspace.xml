@@ -5,24 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../server/src/main/resources/com/mapper/FileMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/upload/2서울라이트1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/upload/3세진식당1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/upload/4을지식당1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/upload/5양미옥1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/upload/6용강식당1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/RestaurantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/RestaurantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/domain/FileInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/FileInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/domain/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/Restaurant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/mapper/RestaurantMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/mapper/RestaurantMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/security/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/security/JwtAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/RestaurantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/RestaurantService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/RestaurantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/RestaurantServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/com/mapper/RestaurantMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/com/mapper/RestaurantMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,11 +83,25 @@
       <workItem from="1638712030609" duration="1661000" />
       <workItem from="1638782543777" duration="11656000" />
       <workItem from="1638866902213" duration="1000" />
+      <workItem from="1638869133602" duration="3498000" />
+      <workItem from="1638873846776" duration="8053000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/api/ApiService.js</url>
+          <line>57</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

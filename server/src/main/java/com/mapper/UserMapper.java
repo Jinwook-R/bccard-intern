@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper {
 
-	public User findByEmail(String email);
-	public User findByEmailAndPassword(String email, String password);
-	public User save(User user);
+	public User findById(String id);
+	public User findByIdAndPassword(String id, String password);
+	public void save(User user);
 }

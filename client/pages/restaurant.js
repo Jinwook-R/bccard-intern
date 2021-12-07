@@ -50,9 +50,7 @@ const Restaurant = ({ router: { query } }) => {
 
     let restaurantList = useSelector(state => state.restaurant.restaurantList);
 
-
-    console.log(restaurantList);
-    const {lat, lng, name, tel, type} = restaurantList.filter((e)=> e.id == query.id)[0];
+    const {address, lat, lng, name, tel, type} = restaurantList.filter((e)=> e.id == query.id)[0];
 
     return (
         <AppLayout>
@@ -66,7 +64,7 @@ const Restaurant = ({ router: { query } }) => {
                 )}
             />
             <Descriptions style={{display:'inline-block', width:'500px'}} size="middle" title={name} bordered>
-                <Descriptions.Item label="주소" span={2}>Cloud Database</Descriptions.Item>
+                <Descriptions.Item label="주소" span={2}>{address}</Descriptions.Item>
                 <Descriptions.Item span={1}>
                     <Link
                         href={{

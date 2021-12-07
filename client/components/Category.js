@@ -3,8 +3,6 @@ import {Card,Row, Col} from 'antd';
 import Link from "next/link";
 import {useSelector} from "react-redux";
 import {API_BASE_URL} from "../api/config";
-import {imageCall} from '../api/ApiService';
-
 
 export const Category = ({title, type}) => {
     const {Meta} = Card;

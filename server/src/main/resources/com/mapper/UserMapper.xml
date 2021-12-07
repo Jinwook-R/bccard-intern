@@ -5,20 +5,20 @@
 <mapper namespace="com.mapper.UserMapper">
 
 	<insert id="save">
-		INSERT INTO user (email, username, department, nickname, rank_type, age)
-		VALUES (#{email}, #{username}, #{department}, #{nickname}, #{rank}, #{age})
+		INSERT INTO user (id, password, username, department, rank_type)
+		VALUES (#{id}, #{password} ,#{username}, #{department},  #{rank_type})
 	</insert>
 
-	<select id="findByEmail" resultType="User">
+	<select id="findById" resultType="User">
 		SELECT * 
 		  FROM user
-		WHERE user.email = #{email}
+		WHERE user.id = #{id}
 	</select>
 	
-	<select id="findByEmailAndPassword" resultType="User">
+	<select id="findByIdAndPassword" resultType="User">
 		SELECT *
 		  FROM user
-		 WHERE user.email = #{email}
+		 WHERE user.id = #{id}
            AND user.password = #{password}
 	</select>
 

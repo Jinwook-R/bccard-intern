@@ -5,12 +5,10 @@ import {withRouter} from "next/router";
 import {useSelector} from "react-redux";
 import { Input } from 'antd';
 import { Rate } from 'antd';
-import Avatar from "../components/Avatar";
 
 const { TextArea } = Input;
 
 const ReviewRegister = ({ router: { query } }) => {
-
 
     //query.id로 음식점 정보 가져오기
     const restaurant = useSelector(state => state.restaurant.restaurantList).filter((e)=> e.id === query.id)[0];

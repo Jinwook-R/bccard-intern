@@ -22,7 +22,7 @@ const Profile = () => {
                     <br />
                 </Descriptions.Item>
             </Descriptions>
-
+            <div>내가 쓴 리뷰 보기</div>
         </AppLayout>
     );
 }

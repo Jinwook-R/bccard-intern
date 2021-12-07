@@ -1,4 +1,5 @@
 import {API_BASE_URL} from './config.js';
+import {Router} from "next/router";
 
 function call(api, method, data){
     let headers = new Headers({
@@ -21,13 +22,13 @@ function call(api, method, data){
     }
 
     return fetch(options.url, options).then((response) =>
-        response.json().then((json) => {
-            if(!response.ok) {
-                return Promise.reject(json);
+        {
+
+            if(response.status !== 200) {
+                return Promise.reject(response);
             }
-            return json;
-        })
-    );
+            return response;
+        });
 }
 
 export function signin(user) {
@@ -41,51 +42,24 @@ export function signin(user) {
         });
 }
 
+export function signup(user) {
+    return call("/auth/signup", "POST", user)
+        .then((response) => {
+
+            if(response.status === 200) {
+                alert("회원가입이 완료되었습니다:)");
+                location.href = '/'
+            } else {
+                alert("회원가입에 실패하였습니다..");
+            }
+        });
+}
+
 export function signout() {
     localStorage.setItem("ACCESS_TOKEN", null);
 }
 
-export function signup() {
 
-}
-
-export function imageCall(param) {
-
-    if(!param) return null;
-
-    let headers = new Headers({
-        "Content-Type":"application/json",
-    });
-
-    const accessToken = localStorage.getItem("ACCESS_TOKEN");
-
-    if(accessToken && accessToken !== null){
-        headers.append("Authorization", "Bearer "+ accessToken);
-    }
-
-    const options = {
-        headers: headers,
-        url: ``,
-        method: "GET",
-    };
-
-    return fetch(options.url, options).then((res) =>
-        {
-            console.log(res)
-            if(!res.ok) {
-                return Promise.reject(res.headers);
-            }
-            return res;
-        }
-    ).then(imageBlob => {
-            // Then create a local URL for that image and print it
-            // const imageObjectURL = URL.createObjectURL(imageBlob);
-            console.log(imageBlob);
-            return imageBlob;
-    })
-
-
-}
 
 export function restaurantlist() {
     return call("/restaurant/list", "GET")
