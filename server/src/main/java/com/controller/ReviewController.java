@@ -22,21 +22,21 @@ public class ReviewController {
 
 	@GetMapping("/list")
 	public void list(Model model, String keyword) throws Exception {
-//		List<Board> list = service.list(keyword);
-//		model.addAttribute("list", list);
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+	//		List<Board> list = service.list(keyword);
+	//		model.addAttribute("list", list);
 	}
 
 	@PostMapping("/insert")
 	public String insert(Model model, Review review) throws Exception {
-		
+
 		int result = service.insert(review);
 		String msg = "";
 		
-		if(result > 0 )
+		if(result > 0 ) {
 			msg = "등록이 완료되었습니다.";
-		else
-			msg ="데이터가 등록되지 않았습니다.";
+		}else {
+			msg = "데이터가 등록되지 않았습니다.";
+		}
 
 		model.addAttribute("msg", msg);
 		

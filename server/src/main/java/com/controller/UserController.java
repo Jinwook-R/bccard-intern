@@ -31,10 +31,13 @@ public class UserController {
 		System.out.println(user.toString());
 		try {
 			userService.save(user);
+			return ResponseEntity.ok().body(responseUser);
 		} catch(Exception e) {
 			log.info(e.getMessage());
+			Response response = Response.builder().error("회원가입에 실패하였습니다.").build();
+			return ResponseEntity.badRequest().body(response);
 		}
-		return ResponseEntity.ok().body(responseUser);
+
 	}
 
 	@PostMapping("/signin")
@@ -43,15 +46,19 @@ public class UserController {
 				user.getId(),
 				user.getPassword()
 		);
-
+		System.out.println(nowUser);
 		if(nowUser != null) {
 			final String token = tokenProvider.create(nowUser);
 			final User responseUser = User.builder()
-					.username(nowUser.getUsername())
 					.token(token)
+					.id(nowUser.getId())
+					.username(nowUser.getUsername())
 					.department(nowUser.getDepartment())
 					.rank_type(nowUser.getRank_type())
+					.user_type(nowUser.getUser_type())
 					.build();
+
+			System.out.println(responseUser);
 			return ResponseEntity.ok().body(responseUser);
 		} else {
 			Response response = Response.builder().error("이메일이나 비밀번호를 확인해주세요....").build();

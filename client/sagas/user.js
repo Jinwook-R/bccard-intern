@@ -1,7 +1,7 @@
 import {signin, signup} from '../api/ApiService';
 import { all, fork, takeEvery, call, put, delay } from 'redux-saga/effects';
 import * as actions from '../reducers/user';
-import {SIGN_IN_FAILURE, SIGN_IN_SUCCESS, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_OUT_FAILURE, SIGN_OUT_SUCCESS} from "../reducers/user";
+import {SIGN_IN_FAILURE, SIGN_IN_SUCCESS, SIGN_UP_SUCCESS, SIGN_OUT_FAILURE, SIGN_OUT_SUCCESS} from "../reducers/user";
 
 export const initialState = {
     user: null,
@@ -18,8 +18,7 @@ function* signIn({payload}) {
     try {
         const {signInData} = payload;
         const result = yield call(signInAPI, signInData);
-
-        yield put({ //put -> dispatch와 동일
+        yield put({
             type: SIGN_IN_SUCCESS,
             payload: result,
         });
@@ -37,7 +36,6 @@ function signUpAPI(data) {
 }
 
 function* signUp({payload}) {
-
     try{
         const {signUpData} = payload;
         const result = yield call(signUpAPI, signUpData);
@@ -48,9 +46,7 @@ function* signUp({payload}) {
         });
     }catch (err) {
         console.log(err);
-
     }
-
 }
 
 function signOutAPI() {
@@ -72,7 +68,6 @@ function* signOut() {
         });
     }
 }
-
 
 function* watchSignIn() {
     yield takeEvery(actions.SIGN_IN_REQUEST, signIn);

@@ -10,7 +10,6 @@ function restaurantListAPI() {
 function* restaurantList() {
     try {
         const result = yield call(restaurantListAPI);
-
         yield put({
             type: RESTAURANT_LIST_SUCCESS,
             payload: result,

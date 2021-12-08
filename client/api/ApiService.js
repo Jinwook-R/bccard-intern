@@ -1,11 +1,9 @@
 import {API_BASE_URL} from './config.js';
-import {Router} from "next/router";
-
 function call(api, method, data){
     let headers = new Headers({
         "Content-Type":"application/json",
     });
-
+    
     const accessToken = localStorage.getItem("ACCESS_TOKEN");
     if(accessToken && accessToken !== null){
         headers.append("Authorization", "Bearer "+ accessToken);
@@ -22,19 +20,17 @@ function call(api, method, data){
     }
 
     return fetch(options.url, options).then((response) =>
-        {
-
-            if(response.status !== 200) {
-                return Promise.reject(response);
+        response.json().then((json) => {
+            if(!response.ok){
+                return Promise.reject(json);
             }
-            return response;
-        });
+            return json;
+        }));
 }
 
 export function signin(user) {
     return call("/auth/signin", "POST", user)
         .then((response) => {
-            console.log("response: ", response);
             if(response.token){
                 localStorage.setItem("ACCESS_TOKEN", response.token);
             }
@@ -59,7 +55,17 @@ export function signout() {
     localStorage.setItem("ACCESS_TOKEN", null);
 }
 
-
+export function reviewinsert(review) {
+    return call("/review/insert", "POST", review)
+        .then((response) => {
+            if(response.status === 200) {
+                alert("리뷰등록이 완료되었습니다:)");
+                location.href = '/';
+            } else {
+                alert("리뷰등록에 실패했습니다.");
+            }
+        });
+}
 
 export function restaurantlist() {
     return call("/restaurant/list", "GET")

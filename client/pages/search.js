@@ -19,15 +19,10 @@ const Search = ({ router: { query } }) => {
     return (
         <AppLayout>
             <Row gutter={[10,10]} style={{width:"100%"}}>
-
                 <Col xs={24} md={6}></Col>
-
                 <Col xs={24} md={12} lg={8}>
                 <SearchInput/>
         {restaurantList.filter((restaurant) => restaurant.name.includes(name)).map((e) => (
-
-
-
                     <Link href={{
                         pathname: '/restaurant',
                         query: { id: e.id},

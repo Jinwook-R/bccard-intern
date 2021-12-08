@@ -1,57 +1,36 @@
 export const initialState = {
-    mainReviews: [{
-        id: 1,
-        User: {
-            id: 1,
-            nickname: '제로초',
-        },
-        content: '첫 번째 게시글 #해시태그 #익스프레스',
-        Images: [{src: 'http://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg'},{src: 'http://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg'},{src: 'http://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg'}],
-        Comments: [{
-            User: {
-                nickname: 'nero',
-            },
-            content: '우와 개정판이 나왔네요',
-        },{
-            User: {
-                nickname: 'hero',
-                },
-                content: '얼른 사고 싶네요',
-            },
-        ]
-    }],
-    imagesPaths:[],
-    reviewAdded:false
+    review: null,
 };
 
-const ADD_REVIEW = 'ADD_REVIEW';
+export const REVIEW_REGISTER_REQUEST = 'RESTAURANT_LIST_REQUEST';
+export const REVIEW_REGISTER_SUCCESS = 'RESTAURANT_LIST_SUCCESS';
+export const REVIEW_REGISTER_FAILURE = 'RESTAURANT_LIST_FAILURE';
 
-export const addReview = {
-    type: ADD_REVIEW,
-};
+export const ReviewRegisterRequestAction = data => ({
+    type: REVIEW_REGISTER_REQUEST,
+});
 
-const dummyReview = {
-    id: 2,
-    content: '더미데이터입니다.',
-    User: {
-        id: 1,
-        nickname: '제로초'
-    },
-    Images: [],
-    Comments: [],
-}
+export default (state = initialState, action) => {
+    const { type, payload, error } = action;
 
-const reducer =  (state = initialState, action) => {
-
-    switch (action.type) {
-        case ADD_REVIEW:
+    switch (type) {
+        case REVIEW_REGISTER_REQUEST: {
             return {
                 ...state,
-                mainPosts: [dummyReview, ...state.mainReviews],
-                postAdded: true
-            }
+            };
+        }
+        case REVIEW_REGISTER_SUCCESS: {
+            return {
+                ...state,
+                review: payload
+            };
+        }
+        case REVIEW_REGISTER_FAILURE: {
+            return {
+                ...state,
+            };
+        }
         default:
             return state;
     }
-
-}
+};

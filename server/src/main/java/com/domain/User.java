@@ -1,7 +1,11 @@
 package com.domain;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
 public class User {
@@ -11,4 +15,5 @@ public class User {
     private String username;
     private String department;
     private String rank_type;
+    private String user_type;
 }

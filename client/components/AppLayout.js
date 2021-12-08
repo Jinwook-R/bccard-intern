@@ -5,7 +5,7 @@ import Link from "next/link";
 import {SignOutRequestAction} from "../reducers/user";
 import {useDispatch, useSelector} from "react-redux";
 
-const AppLayout = ({children}) =>{
+const AppLayout = ({children}) => {
 
     let token = useSelector(state => state.user.me?.token);
     if(!token){

@@ -48,8 +48,7 @@ const data2 = [
 
 const Restaurant = ({ router: { query } }) => {
 
-    let restaurantList = useSelector(state => state.restaurant.restaurantList);
-
+    const restaurantList = useSelector(state => state.restaurant.restaurantList);
     const {address, lat, lng, name, tel, type} = restaurantList.filter((e)=> e.id == query.id)[0];
 
     return (

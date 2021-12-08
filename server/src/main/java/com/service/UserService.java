@@ -6,7 +6,7 @@ public interface UserService {
 
 	public void save(User user);
 
-	public User getByCredentials(String email, String password);
+	public User getByCredentials(String id, String password);
 
 //	public Boolean existsByEmail(String email) throws Exception;
 

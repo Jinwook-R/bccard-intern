@@ -1,44 +1,63 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import AppLayout from "../components/AppLayout";
 import {Button} from "antd";
 import {withRouter} from "next/router";
-import {useSelector} from "react-redux";
 import { Input } from 'antd';
 import { Rate } from 'antd';
-
+import styled from "styled-components";
+import {useDispatch} from "react-redux";
+import {ReviewRegisterRequestAction} from "../reducers/review";
 const { TextArea } = Input;
+
+const StyledReivewRegister = styled.div`
+  margin: 20px auto;
+  width: 600px;
+`;
+
+const StyledButton = styled(Button)`
+  display: block;
+  margin: 5px auto;
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  font: 20px bold;
+`;
+
+const StyledTextArea = styled(TextArea)`
+    margin-bottom: 10px;
+`;
 
 const ReviewRegister = ({ router: { query } }) => {
 
-    //query.id로 음식점 정보 가져오기
-    const restaurant = useSelector(state => state.restaurant.restaurantList).filter((e)=> e.id === query.id)[0];
-    const [value, setValue] = useState(1);
+    const [starValue, setStarValue] = useState(1);
+    const [textValue, setTextValue] = useState('');
+    const dispatch = useDispatch();
 
-    const handleReviewRegister = (e) => {
-        console.log(e);
-    }
+    const handleReviewRegister = useCallback(() => {
+        // alert('handleReviewRegister');
+        dispatch(ReviewRegisterRequestAction({starValue, textValue}))
+    },[]);
 
     const onTextChange = (e) => {
-        console.log(e.target.value);
+        setTextValue(e.target.value);
     }
 
-    const handleStarChange = (value) => {
-        setValue(value);
+    const handleStarChange = (starValue) => {
+        setStarValue(starValue);
     }
-
 
     return(
         <AppLayout>
-            <>
-                <p>{restaurant.name}</p>
+            <StyledReivewRegister>
+                <p style={{textAlign:'center', font:'30px bold'}}>음식점 리뷰</p>
                 <span>
                     별점
-                <Rate onChange={handleStarChange} value={value} />
+                <Rate onChange={handleStarChange} value={starValue} />
                 </span>
-                <TextArea showCount maxLength={10000} style={{ height: 120 }} onChange={onTextChange} />
+                <StyledTextArea showCount maxLength={10000} onChange={onTextChange} />
                 <input type="file" name="file" multiple/>
-                <Button onClick={handleReviewRegister}>리뷰 등록 완료</Button>
-            </>
+                <StyledButton onClick={handleReviewRegister}>리뷰 등록 완료</StyledButton>
+            </StyledReivewRegister>
         </AppLayout>
     );
 }

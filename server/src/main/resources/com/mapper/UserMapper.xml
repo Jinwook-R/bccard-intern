@@ -3,7 +3,6 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mapper.UserMapper">
-
 	<insert id="save">
 		INSERT INTO user (id, password, username, department, rank_type)
 		VALUES (#{id}, #{password} ,#{username}, #{department},  #{rank_type})
@@ -16,7 +15,12 @@
 	</select>
 	
 	<select id="findByIdAndPassword" resultType="User">
-		SELECT *
+		SELECT id
+		     , password
+		     , username
+		     , department
+		     , rank_type
+		     , user_type
 		  FROM user
 		 WHERE user.id = #{id}
            AND user.password = #{password}
@@ -33,5 +37,4 @@
 	<delete id="delete">
 		DELETE FROM review WHERE board_no = #{boardNo}
 	</delete>
-	
 </mapper>

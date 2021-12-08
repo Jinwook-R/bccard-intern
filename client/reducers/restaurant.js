@@ -2,12 +2,10 @@ export const initialState = {
     restaurantList: null, // 음식점 정보
 };
 
-// Action types
 export const RESTAURANT_LIST_REQUEST = 'RESTAURANT_LIST_REQUEST';
 export const RESTAURANT_LIST_SUCCESS = 'RESTAURANT_LIST_SUCCESS';
 export const RESTAURANT_LIST_FAILURE = 'RESTAURANT_LIST_FAILURE';
 
-// Actions creators
 export const restaurantListRequestAction = data => ({
     type: RESTAURANT_LIST_REQUEST,
 });

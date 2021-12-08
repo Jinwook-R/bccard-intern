@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Button, Checkbox, Form, Input} from "antd";
 import useInput from "../hooks/useInput";
 import styled from "styled-components";
@@ -47,6 +47,10 @@ const Signup = () => {
     const [term, setTerm] = useState('');
     const [termError, setTermError] = useState(false);
 
+    useEffect(() => {
+        setPasswordError(passwordCheck !== password);
+    },[passwordCheck]);
+
     const onChangeTerm = useCallback((e) => {
         setTerm(e.target.checked);
         setTermError(false);
@@ -54,7 +58,7 @@ const Signup = () => {
 
 
     const onChangePasswordCheck = useCallback((e) => {
-        setPasswordError(e.target.value !== password);
+
         setPasswordCheck(e.target.value);
     }, []);
 
@@ -75,6 +79,7 @@ const Signup = () => {
             department,
             rank_type: rankType
         }));
+
     },[password, passwordCheck, term]);
 
     return (
