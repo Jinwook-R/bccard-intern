@@ -11,6 +11,7 @@ const Main = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        console.log("main.js mounted!")
         dispatch(restaurantListRequestAction());
     },[]);
 

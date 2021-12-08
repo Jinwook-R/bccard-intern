@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 
 import user from './user';
 import restaurant from "./restaurant";
+import review from './review';
 
 const rootReducer = (state, action) => {
     switch (action.type) {
@@ -11,7 +12,8 @@ const rootReducer = (state, action) => {
         default: {
             const combinedReducer = combineReducers({
                 user,
-                restaurant
+                restaurant,
+                review
             });
             return combinedReducer(state, action);
         }

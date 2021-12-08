@@ -34,8 +34,8 @@ const ReviewRegister = ({ router: { query } }) => {
     const dispatch = useDispatch();
 
     const handleReviewRegister = useCallback(() => {
-        // alert('handleReviewRegister');
-        dispatch(ReviewRegisterRequestAction({starValue, textValue}))
+        alert('handleReviewRegister');
+        // dispatch(ReviewRegisterRequestAction({starValue, textValue}))
     },[]);
 
     const onTextChange = (e) => {

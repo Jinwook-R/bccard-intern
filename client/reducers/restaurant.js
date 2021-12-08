@@ -15,11 +15,14 @@ export default (state = initialState, action) => {
 
     switch (type) {
         case RESTAURANT_LIST_REQUEST: {
+            console.log("RESTAURANT_LIST_REQUEST");
             return {
                 ...state,
             };
         }
         case RESTAURANT_LIST_SUCCESS: {
+            console.log("RESTAURANT_LIST_SUCCESS");
+            console.log({payload})
             return {
                 ...state,
                 restaurantList: payload

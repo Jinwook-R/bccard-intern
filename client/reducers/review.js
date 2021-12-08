@@ -2,9 +2,9 @@ export const initialState = {
     review: null,
 };
 
-export const REVIEW_REGISTER_REQUEST = 'RESTAURANT_LIST_REQUEST';
-export const REVIEW_REGISTER_SUCCESS = 'RESTAURANT_LIST_SUCCESS';
-export const REVIEW_REGISTER_FAILURE = 'RESTAURANT_LIST_FAILURE';
+export const REVIEW_REGISTER_REQUEST = 'REVIEW_REGISTER_REQUEST';
+export const REVIEW_REGISTER_SUCCESS = 'REVIEW_REGISTER_SUCCESS';
+export const REVIEW_REGISTER_FAILURE = 'REVIEW_REGISTER_FAILURE';
 
 export const ReviewRegisterRequestAction = data => ({
     type: REVIEW_REGISTER_REQUEST,

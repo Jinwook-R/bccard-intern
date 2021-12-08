@@ -4,7 +4,7 @@
 
 <mapper namespace="com.mapper.ReviewMapper">
 	<insert id="insert">
-		INSERT INTO review (id, restaurant, starpoint, content, user_id, restaurant_id)
-		VALUES (#{id}, #{restaurant}, #{starpoint}, ${content}, ${user_id}, ${restaurant_id})
+		INSERT INTO review (id, title, starpoint, content, user_id, restaurant_id)
+		VALUES (#{id}, #{title}, #{starpoint}, #{content}, #{user_id}, #{restaurant_id})
 	</insert>
 </mapper>

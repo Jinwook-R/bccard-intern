@@ -44,26 +44,18 @@ public class ReviewController {
 	}
 
 	@GetMapping("/read")
-	public void read(Model model, @RequestParam("boardNo") Integer boardNo) throws Exception{
+	public void read(Model model, @RequestParam("boardNo") Integer boardNo) throws Exception {
 		Review review = service.read(boardNo);
 		
 		model.addAttribute("board", review);
 	}
 
-	@GetMapping("/update")
-	public void updateForm(Model model, @RequestParam("boardNo") Integer boardNo) throws Exception{
-
-		Review review = service.read(boardNo);
-
-		model.addAttribute("board", review);
-	}	
 
 	@PostMapping("/update")
-	public String update(Model model, Review review) throws Exception{
+	public String update(Model model, Review review) throws Exception {
 		
 		int result = service.update(review);
 		String msg = "";
-		
 		
 		if(result > 0 )
 			msg = "수정이 완료되었습니다.";

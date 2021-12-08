@@ -1,15 +1,19 @@
 package com.domain;
 
-import java.util.Date;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
+@Builder
 public class Review {
-	private int boardNo;
+	private int id;
 	private String title;
-	private String writer;
+	private Integer starpoint;
 	private String content;
-	private Date regDate;
-	private Date updDate;
+	private String user_id;
+	private String restaurant_id;
 }

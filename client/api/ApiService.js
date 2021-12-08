@@ -10,9 +10,9 @@ function call(api, method, data){
     }
 
     const options = {
-        headers: headers,
+        headers,
         url: API_BASE_URL + api,
-        method: method,
+        method,
     };
 
     if(data){

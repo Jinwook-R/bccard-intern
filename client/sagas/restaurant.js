@@ -8,7 +8,9 @@ function restaurantListAPI() {
 }
 
 function* restaurantList() {
+    console.log("restaurantList started")
     try {
+
         const result = yield call(restaurantListAPI);
         yield put({
             type: RESTAURANT_LIST_SUCCESS,
@@ -25,6 +27,7 @@ function* restaurantList() {
 }
 
 function* watchRestaurantList() {
+    console.log("watchRestaurantList started")
     yield takeEvery(actions.RESTAURANT_LIST_REQUEST, restaurantList);
 }
 

@@ -42,6 +42,7 @@ public class UserController {
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticate(@RequestBody User user) {
+		System.out.println(user);
 		User nowUser = userService.getByCredentials(
 				user.getId(),
 				user.getPassword()
