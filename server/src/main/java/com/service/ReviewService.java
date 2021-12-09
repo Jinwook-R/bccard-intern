@@ -8,7 +8,7 @@ public interface ReviewService {
 
 	public List<Review> list() throws Exception;
 
-	public int insert(Review review) throws Exception;
+	public Integer insert(Review review) throws Exception;
 
 	public Review read(Integer boardNo) throws Exception;
 

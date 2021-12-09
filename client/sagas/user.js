@@ -36,7 +36,7 @@ function signUpAPI(data) {
 }
 
 function* signUp({payload}) {
-    try{
+    try {
         const {signUpData} = payload;
         const result = yield call(signUpAPI, signUpData);
 
@@ -44,7 +44,7 @@ function* signUp({payload}) {
             type: SIGN_UP_SUCCESS,
             payload: result,
         });
-    }catch (err) {
+    } catch (err) {
         console.log(err);
     }
 }

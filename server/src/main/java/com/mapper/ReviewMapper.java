@@ -22,4 +22,6 @@ public interface ReviewMapper {
 	public List<Review> search(String keyword) throws Exception;
 
 	public void uploadFile(FileInfo fileInfo) throws Exception;
+
+    public Integer readOne() throws Exception;
 }

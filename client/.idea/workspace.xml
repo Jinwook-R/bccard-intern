@@ -9,13 +9,6 @@
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/Review.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/upload/1사랑방칼국수1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../server/upload/restaurant_file/1사랑방칼국수1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/upload/1사랑방칼국수2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../server/upload/restaurant_file/1사랑방칼국수2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/upload/2서울라이트1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../server/upload/restaurant_file/2서울라이트1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/upload/3세진식당1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../server/upload/restaurant_file/3세진식당1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/upload/4을지식당1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../server/upload/restaurant_file/4을지식당1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/upload/5양미옥1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../server/upload/restaurant_file/5양미옥1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/upload/6용강식당1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../server/upload/restaurant_file/6용강식당1.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +88,7 @@
       <workItem from="1638869133602" duration="3498000" />
       <workItem from="1638873846776" duration="8053000" />
       <workItem from="1638920223827" duration="16374000" />
+      <workItem from="1639007124189" duration="15628000" />
     </task>
     <servers />
   </component>

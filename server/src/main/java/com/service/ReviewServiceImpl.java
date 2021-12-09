@@ -31,15 +31,19 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	@Override
 	public Review read(Integer boardNo) throws Exception {
-		System.out.println("@@@@@@@@@@@@@");
 		return mapper.read(boardNo);
 	}
 
 	@Override
-	public int insert(Review review) throws Exception {
-		System.out.println("ReviewService insert");
-		fileUpload(review);
+	public Integer insert(Review review) throws Exception {
 
+		Integer reviewOne = mapper.readOne();
+
+		if(reviewOne == null) {
+			review.setId(1);
+		}else {
+			review.setId(reviewOne+1);
+		}
 		return mapper.insert(review);
 	}
 

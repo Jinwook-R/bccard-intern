@@ -21,6 +21,7 @@ function call(api, method, data){
 
     return fetch(options.url, options).then((response) =>
         response.json().then((json) => {
+            console.log(json,'json');
             if(!response.ok){
                 return Promise.reject(json);
             }
@@ -41,7 +42,6 @@ export function signin(user) {
 export function signup(user) {
     return call("/auth/signup", "POST", user)
         .then((response) => {
-
             if(response.status === 200) {
                 alert("회원가입이 완료되었습니다:)");
                 location.href = '/'
@@ -55,15 +55,12 @@ export function signout() {
     localStorage.setItem("ACCESS_TOKEN", null);
 }
 
-export function reviewinsert(review) {
+export function reviewinsert({review}) {
     return call("/review/insert", "POST", review)
         .then((response) => {
-            if(response.status === 200) {
-                alert("리뷰등록이 완료되었습니다:)");
-                location.href = '/';
-            } else {
-                alert("리뷰등록에 실패했습니다.");
-            }
+            console.log(response);
+            alert("리뷰등록이 완료되었습니다:)");
+            location.href = '/';
         });
 }
 

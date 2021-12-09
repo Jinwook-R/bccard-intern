@@ -3,6 +3,30 @@ import {Card, Row, Col} from 'antd';
 import Link from "next/link";
 import {useSelector} from "react-redux";
 import {API_BASE_URL} from "../api/config";
+import styled from "styled-components";
+
+
+const StyledImgWrapper = styled.div`
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 250px;
+  &::before {
+      content: "";
+      padding-top: 100%;
+      display: block;
+  }
+  img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+  }
+`;
 
 export const Category = ({title, type}) => {
     const {Meta} = Card;
@@ -21,24 +45,24 @@ export const Category = ({title, type}) => {
                 {restaurantList?.map((e, idx) => {
                     if (idx < 6) {
                         return (<Col xs={24} md={12} lg={8}>
-                            <Link href={{
-                                pathname: '/restaurant',
-                                query: {id: e.id},
-                            }}>
-                                <a>
-                                    <Card
-                                        hoverable
-                                        cover={ e.fileInfoList[0]?.fileNo &&
+                                <>
+                                    <StyledImgWrapper className=".img-wrapper">
+                                        <Link href={{
+                                            pathname: '/restaurant',
+                                            query: {id: e.id},
+                                        }}>
                                             <img
-                                                // style={{height:'300px'}}
-                                                 src={API_BASE_URL + `/file/restaurant/img?fileNo=${e.fileInfoList[0]?.fileNo}`}
-                                                 onClick={handleCardClick}
+                                                src={API_BASE_URL + `/file/restaurant/img?fileNo=${e.fileInfoList[0]?.fileNo}`}
+                                                onClick={handleCardClick}
                                             />
-                                        }>
-                                        <Meta title={e.name} />
-                                    </Card>
-                                </a>
-                            </Link>
+                                        </Link>
+                                    </StyledImgWrapper>
+                                        <>
+                                            <Meta title={e.name}/>
+                                            <Meta title={"전화번호"} description={e.tel}/>
+                                        </>
+                                </>
+
                         </Col>);
                     } else {
                         return null;
@@ -56,15 +80,9 @@ export const Category = ({title, type}) => {
                                 query: {id: e.id},
                             }}>
                                 <a>
-                                    <Card
-                                        hoverable
-                                        cover={<img alt="example"
-                                                    src="https://news.kbs.co.kr/data/news/2017/01/04/3405677_bH6.jpg"
-                                                    onClick={handleCardClick}
-                                        />}
-                                    >
+                                    <StyledImgWrapper>
                                         <Meta title={e.name} description="www.aslwdf.com"/>
-                                    </Card>
+                                    </StyledImgWrapper>
                                 </a>
                             </Link>
                         </Col>);

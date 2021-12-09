@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
 		if(userMapper.findById(id) != null){
 			throw new RuntimeException("ID already exists");
 		}
+
 		userMapper.save(user);
 	}
 

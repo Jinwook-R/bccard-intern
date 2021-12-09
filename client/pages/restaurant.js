@@ -68,7 +68,7 @@ const Restaurant = ({ router: { query } }) => {
                     <Link
                         href={{
                             pathname: '/reviewRegister',
-                            query: {id: query.id},
+                            query: {restaurant_id: query.id},
                         }}
                     >
                         <Button>

@@ -8,6 +8,9 @@ export const REVIEW_REGISTER_FAILURE = 'REVIEW_REGISTER_FAILURE';
 
 export const ReviewRegisterRequestAction = data => ({
     type: REVIEW_REGISTER_REQUEST,
+    payload: {
+        review: data,
+    },
 });
 
 export default (state = initialState, action) => {
@@ -15,17 +18,20 @@ export default (state = initialState, action) => {
 
     switch (type) {
         case REVIEW_REGISTER_REQUEST: {
+            console.log("REVIEW_REGISTER_REQUEST");
             return {
                 ...state,
             };
         }
         case REVIEW_REGISTER_SUCCESS: {
+            console.log("REVIEW_REGISTER_SUCCESS");
             return {
                 ...state,
                 review: payload
             };
         }
         case REVIEW_REGISTER_FAILURE: {
+            console.log("REVIEW_REGISTER_FAILURE");
             return {
                 ...state,
             };

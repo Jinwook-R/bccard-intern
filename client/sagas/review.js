@@ -4,12 +4,10 @@ import * as actions from '../reducers/review';
 import {REVIEW_REGISTER_SUCCESS, REVIEW_REGISTER_FAILURE} from "../reducers/review";
 
 function reviewInsertAPI(data) {
-    alert('@@');
     return reviewinsert(data);
 }
 
-function* reviewInsert({payload}) {
-    console.log("reviewInsert")
+function* reviewInsert( {payload} ) {
     try {
         const review = payload;
         const result = yield call(reviewInsertAPI, review);

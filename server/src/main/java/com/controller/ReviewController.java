@@ -1,12 +1,11 @@
 package com.controller;
 
+import com.domain.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.domain.Review;
 import com.service.ReviewService;
@@ -27,15 +26,35 @@ public class ReviewController {
 	}
 
 	@PostMapping("/insert")
-	public String insert(Model model, Review review) throws Exception {
+	public ResponseEntity<?> insert(@RequestBody Review review) throws Exception {
 
 		int result = service.insert(review);
 		String msg = "";
 		
+		if (result > 0 ) {
+			msg = "리뷰 등록이 완료되었습니다.";
+		} else {
+			msg = "리뷰가 등록되지 않았습니다.";
+		}
+		
+		return ResponseEntity.ok().body(msg);
+	}
+
+	@GetMapping("/read")
+	public void read(Model model, @RequestParam("boardNo") Integer boardNo) throws Exception {
+		Review review = service.read(boardNo);
+		model.addAttribute("board", review);
+	}
+
+	@PostMapping("/update")
+	public String update(Model model, Review review) throws Exception {
+		int result = service.update(review);
+		String msg = "";
+		
 		if(result > 0 ) {
-			msg = "등록이 완료되었습니다.";
-		}else {
-			msg = "데이터가 등록되지 않았습니다.";
+			msg = "수정이 완료되었습니다.";
+		}else{
+			msg = "데이터가 수정되지 않았습니다.";
 		}
 
 		model.addAttribute("msg", msg);
@@ -43,34 +62,8 @@ public class ReviewController {
 		return "board/success";
 	}
 
-	@GetMapping("/read")
-	public void read(Model model, @RequestParam("boardNo") Integer boardNo) throws Exception {
-		Review review = service.read(boardNo);
-		
-		model.addAttribute("board", review);
-	}
-
-
-	@PostMapping("/update")
-	public String update(Model model, Review review) throws Exception {
-		
-		int result = service.update(review);
-		String msg = "";
-		
-		if(result > 0 )
-			msg = "수정이 완료되었습니다.";
-		else
-			msg ="데이터가 수정되지 않았습니다.";
-		
-		
-		model.addAttribute("msg", msg);
-		
-		return "board/success";
-	}
-
 	@PostMapping("/delete")
 	public String delete(Model model, Integer boardNo) throws Exception{
-		
 		int result = service.delete(boardNo);
 		String msg = "";
 		
@@ -79,9 +72,7 @@ public class ReviewController {
 		}else {
 			msg = "데이터가 삭제되지 않았습니다.";
 		}
-
 		model.addAttribute("msg", msg);
-		
 		return "board/success";
 	}
 }

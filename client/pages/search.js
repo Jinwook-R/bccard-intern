@@ -32,16 +32,13 @@ const Search = ({ router: { query } }) => {
                             <Card
                                 hoverable
                                 cover={<img alt="example" src="https://news.kbs.co.kr/data/news/2017/01/04/3405677_bH6.jpg"
-                                            onClick={handleCardClick}
-                                />}
+                                            onClick={handleCardClick}/>}
                             >
                                 <Meta title={e.name} description="www.aslwdf.com" />
                             </Card>
                         </a>
                     </Link>
-                        )
-                    )
-                }
+                        ))}
                 </Col>
                 <Col xs={24} md={12} lg={8} />
             </Row>

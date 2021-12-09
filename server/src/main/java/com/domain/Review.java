@@ -11,8 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Review {
 	private int id;
-	private String title;
-	private Integer starpoint;
+	private int starpoint;
 	private String content;
 	private String user_id;
 	private String restaurant_id;
