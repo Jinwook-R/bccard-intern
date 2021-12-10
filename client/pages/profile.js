@@ -10,8 +10,7 @@ const StyledProfile = styled.div`
 `;
 
 const Profile = () => {
-    let user = useSelector(state => state.user?.me);
-
+    const user = useSelector(state => state.user?.me);
     return(
         <AppLayout>
             <StyledProfile>

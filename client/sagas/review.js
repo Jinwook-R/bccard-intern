@@ -4,7 +4,7 @@ import * as actions from '../reducers/review';
 import {REVIEW_REGISTER_SUCCESS, REVIEW_REGISTER_FAILURE} from "../reducers/review";
 
 function reviewInsertAPI(data) {
-    return reviewinsert(data);
+    return reviewinsert(data,{});
 }
 
 function* reviewInsert( {payload} ) {

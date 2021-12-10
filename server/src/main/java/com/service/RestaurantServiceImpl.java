@@ -19,13 +19,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public ArrayList<Restaurant> list() {
 
 		ArrayList<Restaurant> restaurants = null;
-
 		try {
 			restaurants = mapper.list();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
 		return restaurants;
 	}
 

@@ -62,7 +62,8 @@ const Restaurant = ({ router: { query } }) => {
                     </List.Item>
                 )}
             />
-            <Descriptions style={{display:'inline-block', width:'500px'}} size="middle" title={name} bordered>
+            <div style={{ width:'1050px', margin:"0 auto"}}>
+            <Descriptions style={{display:'inline-block'}} size="middle" title={name} bordered>
                 <Descriptions.Item label="주소" span={2}>{address}</Descriptions.Item>
                 <Descriptions.Item span={1}>
                     <Link
@@ -113,6 +114,7 @@ const Restaurant = ({ router: { query } }) => {
                     </List.Item>
                 )}
             />
+            </div>
         </AppLayout>
     );
 };

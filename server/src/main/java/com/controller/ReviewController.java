@@ -6,10 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import com.domain.Review;
 import com.service.ReviewService;
 import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -20,9 +20,9 @@ public class ReviewController {
 	private ReviewService service;
 
 	@GetMapping("/list")
-	public void list(Model model, String keyword) throws Exception {
-	//		List<Board> list = service.list(keyword);
-	//		model.addAttribute("list", list);
+	public void list(String keyword) throws Exception {
+			List<Review> list = service.list(keyword);
+			System.out.println(list);
 	}
 
 	@PostMapping("/insert")
@@ -30,7 +30,7 @@ public class ReviewController {
 
 		int result = service.insert(review);
 		String msg = "";
-		
+
 		if (result > 0 ) {
 			msg = "리뷰 등록이 완료되었습니다.";
 		} else {

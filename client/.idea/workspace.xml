@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/domain/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/service/RestaurantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/service/RestaurantServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +87,7 @@
       <workItem from="1638873846776" duration="8053000" />
       <workItem from="1638920223827" duration="16374000" />
       <workItem from="1639007124189" duration="15628000" />
+      <workItem from="1639093670969" duration="8790000" />
     </task>
     <servers />
   </component>

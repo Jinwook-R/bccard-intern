@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import {API_BASE_URL} from "../api/config";
 import styled from "styled-components";
 
+const {Meta} = Card;
 
 const StyledImgWrapper = styled.div`
   position: relative;
@@ -28,14 +29,31 @@ const StyledImgWrapper = styled.div`
   }
 `;
 
+const StyledMeta = styled(Meta)`
+  position: relative;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-weight: 600;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  font: inherit;
+  vertical-align: baseline;
+`;
+
 export const Category = ({title, type}) => {
-    const {Meta} = Card;
 
     let restaurantList = useSelector(state => state.restaurant.restaurantList);
     let count = 0;
 
     const handleCardClick = (e) => {
-
+        console.log(restaurantList);
     };
 
     return (
@@ -58,8 +76,9 @@ export const Category = ({title, type}) => {
                                         </Link>
                                     </StyledImgWrapper>
                                         <>
-                                            <Meta title={e.name}/>
-                                            <Meta title={"전화번호"} description={e.tel}/>
+                                            <StyledMeta title={e.name}/>
+                                            <StyledMeta title={e.tel}/>
+                                            <StyledMeta title={e.address}/>
                                         </>
                                 </>
 

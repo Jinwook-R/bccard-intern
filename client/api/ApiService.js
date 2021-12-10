@@ -1,9 +1,17 @@
 import {API_BASE_URL} from './config.js';
-function call(api, method, data){
-    let headers = new Headers({
-        "Content-Type":"application/json",
-    });
-    
+function call(api, method, data, config){
+    let headers;
+
+    if(config){
+         headers = new Headers({
+            "Content-Type":"application/json",
+        });
+    }else{
+        headers = new Headers({
+            'Content-Type': 'multipart/form-data'
+        });
+    }
+
     const accessToken = localStorage.getItem("ACCESS_TOKEN");
     if(accessToken && accessToken !== null){
         headers.append("Authorization", "Bearer "+ accessToken);
@@ -55,8 +63,8 @@ export function signout() {
     localStorage.setItem("ACCESS_TOKEN", null);
 }
 
-export function reviewinsert({review}) {
-    return call("/review/insert", "POST", review)
+export function reviewinsert({review, config}) {
+    return call("/review/insert", "POST", review, config)
         .then((response) => {
             console.log(response);
             alert("리뷰등록이 완료되었습니다:)");
@@ -73,3 +81,4 @@ export function restaurantlist() {
             return response;
         });
 }
+

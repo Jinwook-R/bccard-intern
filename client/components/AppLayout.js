@@ -14,13 +14,10 @@ const AppLayout = ({children}) => {
         }
     }
 
-
-
     return (
-        <>{
-            token && <Header/>
-            }
-            {children}
+        <>
+          {token && <Header/>}
+          {children}
         </>
     );
 };
