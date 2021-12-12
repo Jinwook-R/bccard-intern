@@ -2,10 +2,9 @@ import React, {useEffect} from "react";
 import styled from "styled-components";
 
 const StyledMap = styled.div`
-  display: inline-block;
+  display: block;
   position: inherit;
-  height: 500px;
-  width: 500px; 
+  height: 500px; 
   border: black 2px solid;
 `;
 

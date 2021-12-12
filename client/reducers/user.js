@@ -1,15 +1,16 @@
 export const initialState = {
+    loadUserLoading: false,
+    loadUserDone: false,
+    loadUserError: null,
     isSignedIn: false, // 로그인 여부
     isSigningOut: false, // 로그아웃 시도중
+    isSignedOut: false,
     isSigningIn: false, // 로그인 시도중
     signInErrorReason: '', // 로그인 실패 사유
     isSignedUp: false, // 회원가입 성공
     isSignIngUp: false, // 회원가입 시도중
     signUpErrorReason: '', // 회원가입 실패 사유
     me: null, // 내 정보
-    followingList: [], // 팔로잉 리스트
-    followerList: [], // 팔로워 리스트
-
 };
 
 // Action types
@@ -25,6 +26,17 @@ export const SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST';
 export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
 export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE';
 
+export const LOAD_USER_REQUEST = 'LOAD_USER_REQUEST';
+export const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
+export const LOAD_USER_FAILURE = 'LOAD_USER_FAILURE';
+
+export const loadUserRequestAction = data => ({
+    type: LOAD_USER_REQUEST,
+    payload: {
+        id : data,
+    }
+})
+
 export const signUpRequestAction = data => ({
     type: SIGN_UP_REQUEST,
     payload: {
@@ -33,6 +45,7 @@ export const signUpRequestAction = data => ({
 });
 
 export const signInRequestAction = data => {
+    console.log('!!!!!')
     return ({
     type: SIGN_IN_REQUEST,
     payload: {
@@ -40,16 +53,15 @@ export const signInRequestAction = data => {
     },
 })};
 
-export const SignOutRequestAction = () => {
-    return ({
-                type: SIGN_OUT_REQUEST
-            });
+export const signOutRequestAction = () => {
+    return ({type: SIGN_OUT_REQUEST});
 };
 
 export default (state = initialState, action) => {
     const { type, payload, error } = action;
 
-    console.log(payload);
+    console.log('type: ',type,'paylaod: ', payload, 'error: ', error);
+
     switch (type) {
         case SIGN_UP_REQUEST: {
             return {
@@ -104,13 +116,37 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isSignedIn: false,
+                isSignedOut: true,
                 isSigningOut: false,
-                me: {},
+                me: null,
             };
         case SIGN_OUT_FAILURE:
             return {
                 ...state,
                 isSigningOut: false,
+                isSignedOut: false,
+            };
+        case LOAD_USER_REQUEST:
+            return {
+                ...state,
+                loadUserLoading: true,
+                loadUserError: null,
+                loadUserDone: false
+            };
+        case LOAD_USER_SUCCESS:
+            return {
+                ...state,
+                loadUserLoading: false,
+                me: payload,
+                isSignedIn: true,
+                loadUserDone: true
+            };
+        case LOAD_USER_FAILURE:
+            return {
+                ...state,
+                loadUserLoading: false,
+                isSignedIn: false,
+                loadUserError: error,
             };
         default:
             return state;

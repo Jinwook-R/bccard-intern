@@ -11,4 +11,5 @@ public interface RestaurantMapper {
 	ArrayList<Restaurant> list() throws Exception;
 	List<FileInfo> restaurantFileList(Integer refNo);
 	FileInfo restaurantReadFile(Integer refNo) throws Exception;
+	List<String> restaurantMenuList(Integer refNo) throws Exception;
 }

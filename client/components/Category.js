@@ -8,6 +8,7 @@ import styled from "styled-components";
 const {Meta} = Card;
 
 const StyledImgWrapper = styled.div`
+  cursor: pointer;
   position: relative;
   display: block;
   overflow: hidden;
@@ -62,15 +63,15 @@ export const Category = ({title, type}) => {
             {!type && <Row gutter={[10, 10]} style={{width: "100%"}}>
                 {restaurantList?.map((e, idx) => {
                     if (idx < 6) {
-                        return (<Col xs={24} md={12} lg={8}>
-                                <>
+                        return (<Col xs={12} md={8}>
+                                <div style={{cursor: "pointer"}}>
                                     <StyledImgWrapper className=".img-wrapper">
                                         <Link href={{
                                             pathname: '/restaurant',
                                             query: {id: e.id},
                                         }}>
                                             <img
-                                                src={API_BASE_URL + `/file/restaurant/img?fileNo=${e.fileInfoList[0]?.fileNo}`}
+                                                src={API_BASE_URL + `/restaurant/img?fileNo=${e.RestaurantFiles[0]?.fileNo}`}
                                                 onClick={handleCardClick}
                                             />
                                         </Link>
@@ -80,7 +81,7 @@ export const Category = ({title, type}) => {
                                             <StyledMeta title={e.tel}/>
                                             <StyledMeta title={e.address}/>
                                         </>
-                                </>
+                                </div>
 
                         </Col>);
                     } else {
@@ -93,7 +94,7 @@ export const Category = ({title, type}) => {
             {type && <Row gutter={[10, 10]} style={{width: "100%"}}>
                 {restaurantList?.map((e, idx) => {
                     if (count < 6 && (e.type === type)) {
-                        return (<Col xs={24} md={12} lg={8}>
+                        return (<Col xs={12} md={12} lg={8}>
                             <Link href={{
                                 pathname: '/restaurant',
                                 query: {id: e.id},

@@ -4,9 +4,15 @@
 
 <mapper namespace="com.mapper.ReviewMapper">
 	<insert id="insert">
-		INSERT INTO review (id, starpoint, content, user_id, restaurant_id)
-		VALUES (#{id}, #{starpoint}, #{content}, #{user_id}, #{restaurant_id})
+		INSERT INTO review (id, starpoint, content, userId, restaurantId)
+		VALUES (#{id}, #{starpoint}, #{content}, #{userId}, #{restaurantId})
 	</insert>
+
+	<select id="userReview" resultType="Review">
+		SELECT *
+	   	  FROM review
+         WHERE userId = #{userId}
+	</select>
 
 	<select id="readOne" resultType="Integer">
 		SELECT IFNULL(Max(id),0) as id

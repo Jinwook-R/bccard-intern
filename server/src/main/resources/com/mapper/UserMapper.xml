@@ -19,11 +19,11 @@
 		     , password
 		     , username
 		     , department
-		     , rank_type
-		     , user_type
+		     , rankType
+		     , userType
 		  FROM user
-		 WHERE user.id = #{id}
-           AND user.password = #{password}
+		 WHERE id = #{id}
+           AND password = #{password}
 	</select>
 
 	<update id="update">

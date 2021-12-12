@@ -20,4 +20,5 @@ public class Restaurant {
     private String lng;
     private String type;
     private List<FileInfo> fileInfoList;
+    private List<String> menuList;
 }

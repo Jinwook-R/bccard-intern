@@ -1,11 +1,6 @@
 package com.controller;
 
-import com.domain.FileInfo;
-import com.domain.Response;
 import com.domain.Restaurant;
-import com.domain.User;
-import com.security.TokenProvider;
-import com.service.FileService;
 import com.service.RestaurantService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Controller
@@ -44,6 +36,15 @@ public class RestaurantController {
 			responseRestaurant.set(i, now);
 		}
 
+		for(int i = 0 ; i < responseRestaurant.size() ; i++){
+			Restaurant now = responseRestaurant.get(i);
+			now.setMenuList(restaurantService.restaurantMenuList(now.getId()));
+			responseRestaurant.set(i, now);
+		}
+
+
 		return ResponseEntity.ok().body(responseRestaurant);
 	}
+
+
 }

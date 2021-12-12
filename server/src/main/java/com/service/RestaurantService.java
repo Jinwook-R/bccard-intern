@@ -15,4 +15,5 @@ public interface RestaurantService {
 
 	public FileInfo restaurantReadFile(Integer refNo) throws Exception;
 
+    List<String> restaurantMenuList(Integer id) throws Exception;
 }

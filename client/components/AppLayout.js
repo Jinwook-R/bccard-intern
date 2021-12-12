@@ -1,23 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Header from "./Header";
-import {SignOutRequestAction} from "../reducers/user";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
+import styled from "styled-components";
 
+const StyledAppLayout = styled.div`
+  margin: 0 20px;
+`;
 
 const AppLayout = ({children}) => {
-
-    let token = useSelector(state => state.user.me?.token);
-    if(!token){
-        if (typeof window !== 'undefined') {
-            token = localStorage.getItem('ACCESS_TOKEN');
-        }
-    }
+    const {isSignedIn} = useSelector(state => state.user);
 
     return (
         <>
-          {token && <Header/>}
+        <StyledAppLayout>
+          {isSignedIn &&<Header/>}
           {children}
+        </StyledAppLayout>
         </>
     );
 };

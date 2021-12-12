@@ -5,7 +5,7 @@ import React, {
 import {withRouter} from "next/router";
 import AppLayout from "../components/AppLayout";
 import {useDispatch, useSelector} from "react-redux";
-import {ReviewRegisterRequestAction} from "../reducers/review";
+import {ReviewFileRegisterRequestAction, ReviewRegisterRequestAction} from "../reducers/review";
 import styled from "styled-components";
 import {Button} from "antd";
 import TextArea from "antd/es/input/TextArea";
@@ -31,14 +31,16 @@ const StyledTextArea = styled(TextArea)`
 
 const ReviewRegister = ({ router: { query } }) => {
 
-    const [selectedFiles, setSelectedFiles] = useState('');
+    const [selectedFiles, setSelectedFiles] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const [starValue, setStarValue] = useState(1);
     const [textValue, setTextValue] = useState('');
 
     const user_id = useSelector(state => state.user?.me?.id);
+    console.log(user_id,'user_id')
     const {restaurant_id} = query;
+    const restaurantId = restaurant_id;
     const dispatch = useDispatch();
 
     const onTextChange = (e) => {
@@ -51,55 +53,50 @@ const ReviewRegister = ({ router: { query } }) => {
 
     const onClickHandler = event => {
         const formData = new FormData();
-        console.log('selectedFiles: ',selectedFiles);
 
-        formData.append(
-            "uploadImages",
-            selectedFiles[0]
-        );
+        let cnt = 0;
+        for(const file of selectedFiles){
+            formData.append(
+                "myFile"+cnt,
+                file,
+                file.name
+            );
+            cnt++;
+        }
 
-        dispatch(ReviewRegisterRequestAction({
+        const data = {
             starpoint: starValue,
             content: textValue,
-            user_id,
-            restaurant_id
-        })
-        )
+            userId: user_id,
+            restaurantId,
+        }
+        const data2 = {
+            file: formData,
+        }
 
+        dispatch(ReviewFileRegisterRequestAction(data2));
     };
 
-    const uploadImage = async e => {
+    const uploadImage = async (e) => {
         const files = e.target.files
-        const data = new FormData();
-        data.append('file', files[0]);
-        data.append('upload_preset', 'darwin');
-
-        const config = {
-            header: {'content-type': 'multipart/form-data'}
-        }
-
-        for(let value of data.values()) {
-            console.log(value);
-        }
-
-
-
-
+        setSelectedFiles([...files]);
     }
 
         return (
             <AppLayout>
                 <StyledReviewRegister>
                     <p style={{textAlign:'center', font:'30px bold'}}>음식점 리뷰</p>
-                    <span>
-                    별점
-                    <Rate onChange={handleStarChange} value={starValue} />
-                    </span>
-                    <TextArea showCount maxLength={10000} onChange={onTextChange} />
-                    <div className="App" style={{ marginTop: "100px" }}>
-                        <input type="file" multiple onChange={uploadImage} />
-                        <button onClick={onClickHandler}>저장하기</button>
-                    </div>
+                    <form id="review">
+                        <span>
+                        별점
+                        <Rate onChange={handleStarChange} value={starValue} />
+                        </span>
+                        <TextArea showCount maxLength={10000} onChange={onTextChange} />
+                        <div className="App" style={{ marginTop: "100px" }}>
+                            <input type="file" name="file" multiple onChange={uploadImage} />
+                            <button type="button" onClick={onClickHandler}>저장하기</button>
+                        </div>
+                    </form>
                 </StyledReviewRegister>
             </AppLayout>
         );

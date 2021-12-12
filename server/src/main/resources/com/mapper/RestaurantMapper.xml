@@ -4,14 +4,14 @@
 
 <mapper namespace="com.mapper.RestaurantMapper">
 	<select id="list" resultType="Restaurant">
-		SELECT id
-		     , name
-		     , tel
-		     , address
-		     , lat
-		     , lng
-		     , type
- 	      FROM restaurant
+		SELECT T1.id
+		     , T1.name
+		     , T1.tel
+		     , T1.address
+		     , T1.lat
+		     , T1.lng
+		     , T1.type
+ 	      FROM restaurant T1
 	</select>
 
 	<select id="restaurantFileList" resultType="FileInfo">
@@ -19,6 +19,14 @@
 		FROM restaurant_file
 		WHERE ref_no = #{refNo}
 	</select>
+
+	<select id="restaurantMenuList" resultType="String">
+		SELECT menu_name
+		FROM restaurant_menu
+		WHERE ref_no = #{refNo}
+	</select>
+
+
 
 	<select id="restaurantReadFile" resultType="FileInfo">
 		SELECT *

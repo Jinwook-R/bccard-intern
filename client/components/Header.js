@@ -1,70 +1,77 @@
 import * as React from 'react';
 import Link from "next/link";
-import {SignOutRequestAction} from "../reducers/user";
+import {signOutRequestAction} from "../reducers/user";
 import {useDispatch} from "react-redux";
 import styled from "styled-components";
-import {Button} from "antd";
 
-const StyledHeader = styled.div`
-  margin-bottom: 20px;
+const StyledNav = styled.nav`
   display: flex;
-  justify-content: space-around;
-  -webkit-box-align: center;
-  width: 100%;
-  z-index: 2;
-  padding: 7px 0;
-  border-bottom: 1px solid rgb(237, 237, 237);
-  background-color: white;
-  div {
-    box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: aliceblue;
+  margin-bottom: 15px;
+`;
+
+const StyledLi = styled.li`
+ cursor: pointer;
+  list-style-type: none;
+  padding: 8px 5px;
+  margin: 0 4px;
+  span {
+    color: grey;
+    @media screen and (min-width: 501px) {
+        font-size: 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+        font-size: 15px;
+    }
+    font-family: 'Readex Pro', sans-serif;
   }
 `;
 
-const StyledButton = styled(Button)`
-  appearance: auto;
-  -webkit-writing-mode: horizontal-tb !important;
-  text-rendering: auto;
-  color: -internal-light-dark(black, white);
-  letter-spacing: normal;
-  word-spacing: normal;
-  line-height: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: center;
-  align-items: flex-start;
-  cursor: default;
-  box-sizing: border-box;
-  background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
-  margin: 0em;
-  padding: 3px 6px;
-  font-size: 20px;
-  border: none;
-  color: #656262;
+const StyledLogo = styled.span`
+  color: grey;
+  font-size: large;
+  font-family: 'Readex Pro', sans-serif;
+  @media screen and (min-width: 501px) {
+    font-size: 20px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 13px;
+  }
 `;
 
-const Header = () => {
 
+const Header = () => {
     const dispatch = useDispatch();
-        const handleLogout = () => {
+
+    const handleSignOut = () => {
         localStorage.clear();
-        dispatch(SignOutRequestAction());
-        location.href = '/';
+        dispatch(signOutRequestAction());
+
     }
 
     return (
-        <StyledHeader>
+        <StyledNav>
+            <StyledLi>
+                <Link href="/"><StyledLogo>을지로 맛집</StyledLogo></Link>
+            </StyledLi>
             <div>
-                <Link href="/profile"><StyledButton>마이페이지</StyledButton></Link>
+                <ul style={{display:"flex", padding:"0px"}}>
+                <StyledLi>
+                    <Link href="/profile"><span color={"black"}>My Page</span></Link>
+                </StyledLi>
+                <StyledLi>
+                    <Link href="/reservation"><span>Appointment</span></Link>
+                </StyledLi>
+                <StyledLi onClick={handleSignOut}>
+                    <span>Logout</span>
+                </StyledLi>
+                </ul>
             </div>
-            <div>
-                <Link href="/reservation"><StyledButton>약속 관리</StyledButton></Link>
-            </div>
-            <div>
-                <StyledButton onClick={handleLogout}>로그아웃</StyledButton>
-            </div>
-        </StyledHeader>
+        </StyledNav>
     );
 };
 

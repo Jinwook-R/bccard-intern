@@ -14,6 +14,6 @@ public class User {
     private String password;
     private String username;
     private String department;
-    private String rank_type;
-    private String user_type;
+    private String rankType;
+    private String userType;
 }

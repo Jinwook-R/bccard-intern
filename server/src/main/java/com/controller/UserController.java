@@ -3,26 +3,24 @@ package com.controller;
 import com.domain.Response;
 import com.domain.User;
 
-import com.security.TokenProvider;
 import com.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
+@CrossOrigin(origins = "http://localhost:3000")
 @Controller
 @RequestMapping("/auth")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private TokenProvider tokenProvider;
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@RequestBody User user) {
@@ -45,14 +43,13 @@ public class UserController {
 		);
 
 		if(nowUser != null) {
-			final String token = tokenProvider.create(nowUser);
+
 			final User responseUser = User.builder()
-					.token(token)
 					.id(nowUser.getId())
 					.username(nowUser.getUsername())
 					.department(nowUser.getDepartment())
-					.rank_type(nowUser.getRank_type())
-					.user_type(nowUser.getUser_type())
+					.rankType(nowUser.getRankType())
+					.userType(nowUser.getUserType())
 					.build();
 			return ResponseEntity.ok().body(responseUser);
 		} else {

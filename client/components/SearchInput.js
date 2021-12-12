@@ -28,7 +28,7 @@ const SearchInput = () => {
             <AutoComplete
                 dropdownMatchSelectWidth={252}
                 style={{
-                    width: "100%"
+                    width: "100%",
                 }}
                 onChange={handleChange}
                 onSearch={handleSearch}

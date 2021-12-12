@@ -8,7 +8,7 @@ function restaurantListAPI() {
 }
 
 function* restaurantList() {
-    console.log("restaurantList started")
+    console.log("restaurantList started");
     try {
         const result = yield call(restaurantListAPI);
         yield put({

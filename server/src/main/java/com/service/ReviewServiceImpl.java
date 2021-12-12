@@ -65,6 +65,17 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.search(keyword);
 	}
 
+	@Override
+	public List<Review> userReview(String userId) throws Exception {
+		return mapper.userReview(userId);
+	}
+
+	@Override
+	public int insertFile(Review review) {
+//		return mapper.userReview(userId);
+		return 0;
+	}
+
 	public void fileUpload(Review board) throws Exception {
 
 //		MultipartFile[] files = board.getFile();

@@ -1,17 +1,36 @@
-import {signin, signup} from '../api/ApiService';
+import {loadUserRequest, logInRequest, signOutRequest, signup} from '../api/ApiService';
 import { all, fork, takeEvery, call, put, delay } from 'redux-saga/effects';
 import * as actions from '../reducers/user';
-import {SIGN_IN_FAILURE, SIGN_IN_SUCCESS, SIGN_UP_SUCCESS, SIGN_OUT_FAILURE, SIGN_OUT_SUCCESS} from "../reducers/user";
+import {
+    SIGN_IN_FAILURE,
+    SIGN_IN_SUCCESS,
+    SIGN_UP_SUCCESS,
+    SIGN_OUT_FAILURE,
+    SIGN_OUT_SUCCESS,
+    LOAD_USER_SUCCESS
+} from "../reducers/user";
 
-export const initialState = {
-    user: null,
-    signInLoading: false,
-    signInSucceed: false,
-    signInError: null
+function loadUserAPI(data) {
+    console.log('loadUserAPI start',data);
+    return loadUserRequest(data);
 }
 
 function signInAPI(data) {
-    return signin(data);
+    return logInRequest(data);
+}
+
+function* loadUser({payload}) {
+     try {
+        const {user} = payload;
+        const result = yield call(loadUserAPI, user);
+
+        yield put({
+            type: LOAD_USER_SUCCESS,
+            payload: result.data,
+        });
+    }catch (error) {
+
+    }
 }
 
 function* signIn({payload}) {
@@ -20,10 +39,10 @@ function* signIn({payload}) {
         const result = yield call(signInAPI, signInData);
         yield put({
             type: SIGN_IN_SUCCESS,
-            payload: result,
+            payload: result.data,
         });
     } catch (err) {
-        console.log(err);
+        alert(err.response.data);
         yield put({
             type: SIGN_IN_FAILURE,
             error: err.response.data,
@@ -50,13 +69,15 @@ function* signUp({payload}) {
 }
 
 function signOutAPI() {
-    // return signout();
+    console.log('signOutRequestAPI Called');
+    return signOutRequest();
 }
 
 function* signOut() {
+    console.log('signOut');
     try {
-        // const result = yield call(logOutAPI);
-        yield delay(1000);
+        const result = yield call(signOutAPI);
+        console.log(result)
         yield put({
             type: SIGN_OUT_SUCCESS,
         });
@@ -77,9 +98,21 @@ function* watchSignUp() {
     yield takeEvery(actions.SIGN_UP_REQUEST, signUp);
 }
 
+function* watchSignOut() {
+    yield takeEvery(actions.SIGN_OUT_REQUEST, signOut);
+}
+
+function* watchLoadUser() {
+    yield takeEvery(actions.LOAD_USER_REQUEST, loadUser);
+}
+
+
+
 export default function* userSaga() {
     yield all([
         fork(watchSignIn),
         fork(watchSignUp),
+        fork(watchSignOut),
+        fork(watchLoadUser),
     ]);
 }

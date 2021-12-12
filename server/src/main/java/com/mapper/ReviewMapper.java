@@ -24,4 +24,6 @@ public interface ReviewMapper {
 	public void uploadFile(FileInfo fileInfo) throws Exception;
 
     public Integer readOne() throws Exception;
+
+    List<Review> userReview(String userId);
 }

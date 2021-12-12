@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void save(User user) {
 
-		if(user == null || user.getId() == null || user.getPassword() == null || user.getDepartment() == null || user.getRank_type() == null){
+		if(user == null || user.getId() == null || user.getPassword() == null || user.getDepartment() == null || user.getRankType() == null){
 			throw new RuntimeException("Invalid arguments");
 		}
 

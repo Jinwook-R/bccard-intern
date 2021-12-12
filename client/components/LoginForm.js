@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Form, Input} from 'antd';
+import {Button, Input} from 'antd';
 import Link from "next/link";
 import useInput from "../hooks/useInput";
 import styled from 'styled-components';
@@ -8,19 +8,34 @@ import {useCallback} from "react";
 import {signInRequestAction} from '../reducers/user';
 
 const StyledLoginForm = styled.div`
-  width: 500px;
+  width: 501px;
   margin: 50px auto;
 `;
 
 const StyledLabel = styled.label`
   font-weight: bold;
+  font-size: 20px;
 `;
 
 const StyledButton = styled(Button)`
-  width: 100%;
-  height: 40px;
+  width: 500px;
+  height: 50px;
   border-radius: 5px;
   font: 20px bold;
+`;
+
+const StyledP = styled.p`
+  color: grey;
+  font-family: 'Readex Pro', sans-serif;
+  font-weight: bold;
+  @media screen and (min-width: 501px) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+  }
+
 `;
 
 const LoginForm = () => {
@@ -37,25 +52,23 @@ const LoginForm = () => {
 
     return (
         <StyledLoginForm>
-            <p style={{fontSize:'50px', fontStyle:'bold', textAlign:'center'}}>BC로(路)</p>
-            <Form onFinish={onSubmitForm}>
+            <StyledP style={{fontSize:'50px', fontStyle:'bold', textAlign:'center'}}>을지로 맛집</StyledP>
+            <div>
                 <div>
                     <StyledLabel htmlFor="user-id">아이디</StyledLabel>
                     <br/>
-                    <Input name="user-id" value={id} onChange={onChangeId} required/>
+                    <Input style={{height:"40px"}} name="user-id" value={id} onChange={onChangeId} required/>
                 </div>
                 <div>
                     <StyledLabel htmlFor="user-password">비밀번호</StyledLabel>
                     <br/>
-                    <Input name="user-password" type="password" value={password} onChange={onChangePassword} required/>
+                    <Input style={{height:"40px"}} name="user-password" type="password" value={password} onChange={onChangePassword} required/>
                 </div>
-                <div>
-                    <StyledButton type="primary" htmlType="submit" loading={false} style={{width:'maxWidth', margin:'5px 0', marginRight:'10px'}}>로그인</StyledButton>
-                </div>
-                <div>
+                <div style={{marginTop:"5px"}}>
+                    <StyledButton type="primary" onClick={onSubmitForm} loading={false} style={{width:'maxWidth', margin:'5px 0', marginRight:'10px'}}>로그인</StyledButton>
                     <Link href="/signup"><a><StyledButton>회원가입</StyledButton></a></Link>
                 </div>
-            </Form>
+            </div>
         </StyledLoginForm>
     );
 };
