@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../server2/routes/review.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server2/routes/review.js" afterDir="false" />
-    </list>
+    <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
