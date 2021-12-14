@@ -1,4 +1,6 @@
 import React, {
+    useCallback,
+    useRef,
     useState,
 } from "react";
 import {withRouter} from "next/router";
@@ -6,11 +8,12 @@ import AppLayout from "../components/AppLayout";
 import {useDispatch, useSelector} from "react-redux";
 import {ReviewFileRegisterRequestAction} from "../reducers/review";
 import styled from "styled-components";
-import {Button, Upload} from "antd";
+import {Button, Form, Upload} from "antd";
 import {Input} from 'antd';
 import { Rate } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import {Typography} from "antd";
+import axios from "axios";
 
 const {Text} = Typography;
 const {TextArea} = Input;
@@ -36,7 +39,8 @@ const StyledButton = styled(Button)`
 
 const ReviewRegister = ({ router: { query } }) => {
 
-    const [selectedFiles, setSelectedFiles] = useState([]);
+    const [selectedFiles, setSelectedFiles] = useState(null);
+    const [tmpSelectedFiles, setTmpSelectedFiles] = useState(null);
 
     const [starValue, setStarValue] = useState(1);
     const [textValue, setTextValue] = useState('');
@@ -58,26 +62,15 @@ const ReviewRegister = ({ router: { query } }) => {
 
     const onClickHandler = event => {
         const formData = new FormData();
-        const data = {
-            starpoint: starValue,
-            content: textValue,
-            userId: user_id,
-            restaurantId,
-        };
-
-        fileList.forEach(file => formData.append('files', file));
-        for(let key in selectedFiles) {
-            formData.append(key, selectedFiles[key]);
-        }
-
-        const data2 = {
-            file: formData,
-        };
-        dispatch(ReviewFileRegisterRequestAction(data2));
+        console.log(event)
+        formData.append('file', fileList);
+        console.log(formData,'!!!!!!!!!!!!!!!!');
+        axios.post('http://localhost:8080/review/insertFile', formData).then(r =>{} );
+        // dispatch(ReviewFileRegisterRequestAction(formData));
     };
 
-    const uploadImage = async ({ fileList: newFileList }) => {
-        setFileList(newFileList);
+    const onChangeImages = async ({fileList}) => {
+        setFileList(fileList);
     }
 
     const onPreview = async file => {
@@ -95,28 +88,43 @@ const ReviewRegister = ({ router: { query } }) => {
         imgWindow.document.write(image.outerHTML);
     };
 
+    const handleFileChange = (e) => {
+        const formData = new FormData();
+
+        formData.append('file',e.target.files);
+        setSelectedFiles(formData);
+        setTmpSelectedFiles(e.target.files);
+        // axios.post('http://localhost:8080/review/insertFile',formData);
+    }
+
+
     return (
         <AppLayout>
             <StyledReviewRegister>
                 <p style={{textAlign:'center'}}>
                     <Text strong style={{font:'30px bold'}}>리뷰 등록</Text>
                 </p>
-                <form id="review">
+                <Form id="review" encType="multipart/form-data" onFinish={onClickHandler}>
                     <span>별점<Rate onChange={handleStarChange} value={starValue}/></span>
                     <StyledTextArea showCount maxLength={5000} onChange={onTextChange} />
                     <div className="App" style={{ marginTop: "10px" }}>
+                        <input id="imageUpload" type="file" multiple={true} onChange={handleFileChange}/>
+                        <StyledButton for="imageUpload">파일 선택하기</StyledButton>
                         <ImgCrop rotate>
                             <Upload
+                                type="file"
+                                multiple
                                 listType="picture-card"
                                 fileList={fileList}
-                                onChange={uploadImage}
-                                onPreview={onPreview}>
-                                {fileList.length < 5 && '+ Upload'}
+                                onPreview={onPreview}
+                                disabled={true}
+                            >
+                                {fileList.length < 5 && ' '}
                             </Upload>
                         </ImgCrop>
-                        <StyledButton type="button" onClick={onClickHandler}>저장하기</StyledButton>
+                        <StyledButton type="button" htmlType="submit">저장하기</StyledButton>
                     </div>
-                </form>
+                </Form>
             </StyledReviewRegister>
         </AppLayout>
     );

@@ -25,7 +25,7 @@ export const ReviewRegisterRequestAction = data => ({
 export const ReviewFileRegisterRequestAction = data =>({
     type: REVIEW_FILE_REGISTER_REQUEST,
     payload: {
-        file: data,
+        data,
     },
 })
 

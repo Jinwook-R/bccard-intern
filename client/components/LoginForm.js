@@ -53,7 +53,7 @@ const LoginForm = () => {
 
     return (
         <StyledLoginForm>
-            <StyledP style={{fontSize:'50px', fontStyle:'bold', textAlign:'center'}}>을지로 맛집</StyledP>
+            <StyledP style={{fontSize:'50px', fontStyle:'bold', textAlign:'center'}}>BC로(路)</StyledP>
             <div>
                 <div>
                     <StyledLabel htmlFor="user-id">아이디</StyledLabel>

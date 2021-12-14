@@ -5,7 +5,6 @@ const StyledMap = styled.div`
   display: block;
   position: inherit;
   border: grey 2px solid;
-  border-radius: 10px;
   @media screen and (min-width: 501px) {
     height: 500px;
   }

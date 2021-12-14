@@ -39,11 +39,10 @@ function* myReviewList( {payload} ) {
 
 function* reviewFileInsert( {payload} ) {
 
-    console.log('reviewFileInsert:' , payload);
+    console.log('reviewFileInsert:' , payload.data);
 
     try {
-        const review = payload;
-        const result = yield call(reviewFileInsertAPI, review);
+        const result = yield call(reviewFileInsertAPI, payload.data);
         yield put({
             type: REVIEW_FILE_REGISTER_SUCCESS,
             payload: result,
@@ -61,7 +60,7 @@ function* reviewInsert( {payload} ) {
     console.log('reviewInsert:' , payload);
     try {
         const file = payload;
-        const result = yield call(reviewFileInsertAPI, file);
+        const result = yield call(reviewInsertAPI, file);
         yield put({
             type: REVIEW_FILE_REGISTER_SUCCESS,
             payload: result,

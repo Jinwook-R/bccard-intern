@@ -45,7 +45,6 @@ export function loadUserRequest(user){
 
 export function logInRequest(user) {
     const api = `/auth/login`;
-    console.log(api);
     return axios.post(api, user);
 }
 
@@ -79,20 +78,13 @@ export function signup(user) {
         });
 }
 
-
-
 export function reviewInsertRequest({review}) {
     return axios.post("POST", review);
 }
 
-export function reviewFileInsertRequest({file}){
-    const data = file;
-    console.log('reviewfileInsertRequest: ',data);
-    return call("/review/insertFile", "POST", data, 'reviewInsertFile')
-        .then((response) => {
-            console.log(response);
-            // location.href = '/';
-        });
+export function reviewFileInsertRequest(file){
+    console.log('reviewfileInsertRequest: ', file);
+    return axios.post("/review/insertFile" ,file);
 }
 
 export function restaurantlist() {
