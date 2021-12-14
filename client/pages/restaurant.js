@@ -3,11 +3,12 @@ import AppLayout from "../components/AppLayout";
 import { withRouter } from 'next/router';
 import Map from "../components/Map";
 import {useSelector} from "react-redux";
-import {Badge, Button, Card, Col, Descriptions, Image, List, Row} from 'antd';
-import {HighlightOutlined} from "@ant-design/icons";
+import {Badge, Button, Col, Image, List, Row, Space, Typography} from 'antd';
 import Avatar from "antd/es/avatar/avatar";
 import Link from "next/link";
 import styled from "styled-components";
+
+const {Text} = Typography
 
 function ImageDemo() {
     return (
@@ -64,20 +65,44 @@ const StyledImageList = styled.div`
   font-size: 0;
 `;
 
-const StyledTitle = styled.span`
+const StyledTitle = styled.p`
   @media screen and (min-width: 501px) {
-     {font-size: 30px;}
+    font-size: 35px;
+    text-align: center;
   }
 
   @media screen and (max-width: 500px) {
-     {font-size: 20px;}
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
   }
+  
+  margin-top: 10px;
   font-family: 'Readex Pro', sans-serif;
   font-weight: normal;
 `;
 
 const StyledImage = styled.div`
   padding: 0 5px;
+`;
+
+const StyledDescription = styled.div`
+  .ant-descriptions-view .ant-descriptions-row .ant-descriptions-item-label {
+    @media screen and (min-width: 501px) {
+      span {font-size: 20px;}
+    }
+
+    @media screen and (max-width: 320px) {
+      span {
+        font-size: 8px;
+        font-weight: bold;
+      }
+    }
+    
+  }
+  p {
+    padding-left: 2px;
+  }
 `;
 
 const Restaurant = ({ router: { query } }) => {
@@ -88,64 +113,77 @@ const Restaurant = ({ router: { query } }) => {
     return (
         <AppLayout>
             <Row gutter={[10, 10]} style={{width: "100%"}}>
-            <Col xs={2}></Col>
-            <Col xs={20} md={20}>
-            <StyledImageList>
-                <StyledImage><ImageDemo/></StyledImage>
-                <StyledImage><ImageDemo/></StyledImage>
-                <StyledImage><ImageDemo/></StyledImage>
-                <StyledImage><ImageDemo/></StyledImage>
-            </StyledImageList>
-            <div>
-            <StyledTitle>{name}</StyledTitle>
-            <Descriptions style={{display:'block'}} size="big" bordered>
-                <Descriptions.Item label="주소" span={2}>{address}</Descriptions.Item>
-                <Descriptions.Item label="전화번호" span={3}>{tel}</Descriptions.Item>
-                <Descriptions.Item label="음식 종류" span={3}>{type}</Descriptions.Item>
-                <Descriptions.Item label="가격대" span={3}>{price}원</Descriptions.Item>
-                <Descriptions.Item label="주차" span={3}>
-                    {parking}
-                </Descriptions.Item>
-                <Descriptions.Item label="영업시간" span={3}>
-                    <Badge status="processing" text="Running" />
-                </Descriptions.Item>
-                <Descriptions.Item label="메뉴">
-                    {RestaurantMenus?.map((e) => {
-                        return (<>
-                            <span>{e.menuName}</span>
-                            <br/>
-                        </>)
-                    }) }
-                </Descriptions.Item>
-            </Descriptions>
-            <Link
-                href={{
-                    pathname: '/reviewRegister',
-                    query: {restaurant_id: query.id},
-                }}
-            >
-                <Button style={{width:"100%", margin:"10px 0", height:"50px", backgroundColor:'whitesmoke', borderRadius:"5px"}}>
-                    <span style={{fontSize:"20px", fontWeight:"bold"}}>리뷰 작성하기</span>
-                </Button>
-            </Link>
-            <Map lat={lat} lng={lng} name={name}></Map>
-            <List
-                itemLayout="horizontal"
-                dataSource={data}
-                renderItem={item => (
-                    <List.Item>
-                        <List.Item.Meta
-                            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                            title={<a href="https://ant.design">{item.title}</a>}
-                            description={item.content}
-                        />
-                    </List.Item>
-                )}
-            />
-            </div>
-
+            <Col xs={1}></Col>
+            <Col xs={22} md={20}>
+                <StyledImageList>
+                    <StyledImage><ImageDemo/></StyledImage>
+                    <StyledImage><ImageDemo/></StyledImage>
+                    <StyledImage><ImageDemo/></StyledImage>
+                    <StyledImage><ImageDemo/></StyledImage>
+                </StyledImageList>
+                <StyledDescription>
+                    <StyledTitle>{name}</StyledTitle>
+                    <Space direction="vertical">
+                        <div id='address' span={3}>
+                            <Text strong>주소</Text>
+                            <p>{address}</p>
+                        </div>
+                        <div id='tel' span={3}>
+                            <Text strong>전화번호</Text>
+                            <p>{tel}</p>
+                        </div>
+                        <div id='food' span={3}>
+                            <Text strong>음식 종류</Text>
+                            <p>{type}</p>
+                        </div>
+                        <div id='price' span={3}>
+                            <Text strong>가격대</Text>
+                            <p>{price}원</p>
+                        </div>
+                        <div label="주차" span={3}>
+                            <Text strong>주차</Text>
+                            <p>{parking}</p>
+                        </div>
+                        <div span={3}>
+                            <Text strong>영업시간</Text>
+                            <p>Running</p>
+                        </div>
+                        <div>
+                            <Text strong>메뉴</Text>
+                            {RestaurantMenus?.map((e) => {
+                                return (<div>
+                                            <span>{e.menuName}</span>
+                                        </div>)
+                            }) }
+                        </div>
+                    </Space>
+                    <Link
+                        href={{
+                            pathname: '/reviewRegister',
+                            query: {restaurant_id: query.id},
+                        }}
+                    >
+                        <Button style={{width:"100%", margin:"10px 0", height:"50px", backgroundColor:'whitesmoke', borderRadius:"5px"}}>
+                            <span style={{fontSize:"20px", fontWeight:"bold"}}>리뷰 작성하기</span>
+                        </Button>
+                    </Link>
+                    <Map lat={lat} lng={lng} name={name}></Map>
+                    <List
+                        itemLayout="horizontal"
+                        dataSource={data}
+                        renderItem={item => (
+                            <List.Item>
+                                <List.Item.Meta
+                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                                    title={<a href="https://ant.design">{item.title}</a>}
+                                    description={item.content}
+                                />
+                            </List.Item>
+                        )}
+                    />
+                </StyledDescription>
             </Col>
-            <Col xs={2}></Col>
+            <Col xs={1}></Col>
             </Row>
         </AppLayout>
     );

@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import AppLayout from "../components/AppLayout";
 import {useDispatch, useSelector} from "react-redux";
-import {Descriptions} from "antd";
+import {Descriptions, Typography} from "antd";
 import styled from "styled-components";
-import {MyReivewListRequestAction} from "../reducers/review";
+
+const {Text} = Typography
 
 const StyledProfile = styled.div`
   width: 500px;
@@ -16,24 +17,46 @@ const Profile = () => {
     const dispatch = useDispatch();
 
     useEffect(()=> {
-        console.log("dispatch MyReviewListRequestAction");
+        // console.log("dispatch MyReviewListRequestAction");
         // dispatch(MyReivewListRequestAction(user?.id));
     }, []);
 
-    console.log(me);
+    console.log(me)
 
     return(
         <AppLayout>
-            <StyledProfile>
-                <Descriptions span={1} title="사용자 정보" bordered>
-                    <Descriptions.Item label="아이디" span={3}>{me?.id}</Descriptions.Item>
-                    <Descriptions.Item label="이름" span={3}>{me?.username}</Descriptions.Item>
-                    <Descriptions.Item label="부서" span={3}>{me?.department}</Descriptions.Item>
-                    <Descriptions.Item label="직책" span={3}>{me?.rankType}</Descriptions.Item>
-                    <Descriptions.Item label="회원구분" span={3}>{me?.userType}</Descriptions.Item>
-                </Descriptions>
+            <div>
+                <Text>사용자 정보</Text>
+                    <div id='address' span={3}>
+                        <Text strong>아이디</Text>
+                        <p>{me?.id}</p>
+                    </div>
+                    <div id='name' span={3}>
+                        <Text strong>이름</Text>
+                        <p>{me?.name}</p>
+                    </div>
+                    <div id='id' span={3}>
+                        <Text strong>아이디</Text>
+                        <p>{me?.id}</p>
+                    </div>
+                    <div id='id' span={3}>
+                        <Text strong>이름</Text>
+                        <p>{me?.username}</p>
+                    </div>
+                    <div id='id' span={3}>
+                        <Text strong>부서</Text>
+                        <p>{me?.department}</p>
+                    </div>
+                    <div id='id' span={3}>
+                        <Text strong>직책</Text>
+                        <p>{me?.rankType}</p>
+                    </div>
+                    <div id='id' span={3}>
+                        <Text strong>회원구분</Text>
+                        <p>{me?.userType}</p>
+                    </div>
                 <div>내가 쓴 리뷰 보기</div>
-            </StyledProfile>
+            </div>
         </AppLayout>
     );
 }

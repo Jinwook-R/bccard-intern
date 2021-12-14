@@ -8,6 +8,15 @@ const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
 
+
+router.post('/review/insertFile',async (req, res) => {
+    try {
+        console.log(req);
+    } catch(error) {
+        console.log(error);
+    }
+});
+
 try {
     fs.readdirSync('uploads');
 } catch (error) {
@@ -32,11 +41,9 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
     console.log(req.file);
     res.json({ url: `/img/${req.file.filename}` });
 });
-
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
     try {
-        console.log(req.user);
         const post = await Post.create({
             content: req.body.content,
             img: req.body.url,

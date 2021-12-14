@@ -26,10 +26,7 @@ router.get('/img', async (req, res) => {
     }
 });
 
-router.get('/list',async (req, res, next) => {
-
-    console.log('restaurant/list called!');
-
+router.get('/list', async (req, res, next) => {
     try {
         const restaurantList = await Restaurant.findAll({
             include: [{

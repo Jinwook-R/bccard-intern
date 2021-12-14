@@ -40,9 +40,8 @@ module.exports = class User extends Sequelize.Model {
     });
     }
 
-    //Sequelize.DATE -> mysql DATETIME
     static associate(db) {
-        // db.User.hasMany(db.Review, { foreignKey: 'ref_no', sourceKey: 'id' }); -> hasMay -> sourceKey
+        // db.User.hasMany(db.Appointment , { foreignKey: 'userId', sourceKey: 'id' });
         // db.User.belongsTo(db.Review, { foreignKey: 'ref_no', targetKey: 'id' }); belongsTo-> targetKey
     }   
 };

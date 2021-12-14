@@ -29,7 +29,7 @@ export const ReviewFileRegisterRequestAction = data =>({
     },
 })
 
-export const MyReivewListRequestAction = data => ({
+export const MyReviewListRequestAction = data => ({
     type: MY_REVIEW_LIST_REQUEST,
     payload: {
         userId: data

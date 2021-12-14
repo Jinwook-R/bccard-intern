@@ -12,7 +12,8 @@ const StyledImgWrapper = styled.div`
   position: relative;
   display: block;
   overflow: hidden;
-  height: 250px;
+  height: 200px;
+  border-radius: 10px;
   &::before {
       content: "";
       padding-top: 100%;
@@ -28,6 +29,14 @@ const StyledImgWrapper = styled.div`
       bottom: 0;
       margin: auto;
   }
+  @media screen and (min-width: 501px) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 8px;
+  }
+  
 `;
 
 const StyledMeta = styled(Meta)`
@@ -64,23 +73,19 @@ export const Category = ({title, type}) => {
                 {restaurantList?.map((e, idx) => {
                     if (idx < 6) {
                         return (<Col xs={12} md={8}>
-                                <div style={{cursor: "pointer"}}>
+                                <div style={{cursor: "pointer", display:"inline"}}>
                                     <StyledImgWrapper className=".img-wrapper">
                                         <Link href={{
                                             pathname: '/restaurant',
                                             query: {id: e.id},
                                         }}>
-                                            <img
-                                                src={API_BASE_URL + `/restaurant/img?fileNo=${e.RestaurantFiles[0]?.fileNo}`}
-                                                onClick={handleCardClick}
-                                            />
+                                            <img src={API_BASE_URL + `/restaurant/img?fileNo=${e.RestaurantFiles[0]?.fileNo}`}  onClick={handleCardClick}/>
                                         </Link>
+                                        <p><span></span></p>
+                                        <p><span>{e.address}</span></p>
+                                        <p><span>{e.tel}</span></p>
                                     </StyledImgWrapper>
-                                        <>
-                                            <StyledMeta title={e.name}/>
-                                            <StyledMeta title={e.tel}/>
-                                            <StyledMeta title={e.address}/>
-                                        </>
+
                                 </div>
 
                         </Col>);

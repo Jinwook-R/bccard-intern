@@ -5,7 +5,6 @@ function call(api, method, data, config){
 
     if(config === 'reviewInsertFile'){
         headers = new Headers({});
-
     }else{
         headers = new Headers({
              "Content-Type":"application/json",
@@ -25,7 +24,7 @@ function call(api, method, data, config){
 
     if(data && config !== 'reviewInsertFile'){
         options.body= JSON.stringify(data);
-    }else {
+    } else {
         options.body = data;
     }
 
@@ -46,6 +45,7 @@ export function loadUserRequest(user){
 
 export function logInRequest(user) {
     const api = `/auth/login`;
+    console.log(api);
     return axios.post(api, user);
 }
 
@@ -81,27 +81,21 @@ export function signup(user) {
 
 
 
-export function reviewinsert({review}) {
-    return call("/review/insert", "POST", review)
-        .then((response) => {
-            console.log(response);
-            alert("리뷰등록이 완료되었습니다:)");
-            location.href = '/';
-        });
+export function reviewInsertRequest({review}) {
+    return axios.post("POST", review);
 }
 
-export function reviewfileinsert({file}){
+export function reviewFileInsertRequest({file}){
     const data = file;
-    console.log(data)
+    console.log('reviewfileInsertRequest: ',data);
     return call("/review/insertFile", "POST", data, 'reviewInsertFile')
         .then((response) => {
             console.log(response);
-            location.href = '/';
+            // location.href = '/';
         });
 }
 
 export function restaurantlist() {
-
     return call("/restaurant/list", "GET")
         .then((response) => {
             if(response) {

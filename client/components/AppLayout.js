@@ -5,16 +5,15 @@ import {useSelector} from "react-redux";
 import styled from "styled-components";
 
 const StyledAppLayout = styled.div`
-  margin: 0 20px;
+  margin: 0 10px;
 `;
 
 const AppLayout = ({children}) => {
-    const {isSignedIn} = useSelector(state => state.user);
 
     return (
         <>
+
         <StyledAppLayout>
-          {isSignedIn &&<Header/>}
           {children}
         </StyledAppLayout>
         </>

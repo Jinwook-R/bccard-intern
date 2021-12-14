@@ -10,6 +10,7 @@ import {signInRequestAction} from '../reducers/user';
 const StyledLoginForm = styled.div`
   width: 501px;
   margin: 50px auto;
+  padding: 0 5px;
 `;
 
 const StyledLabel = styled.label`
@@ -18,7 +19,7 @@ const StyledLabel = styled.label`
 `;
 
 const StyledButton = styled(Button)`
-  width: 500px;
+  width: 100%;
   height: 50px;
   border-radius: 5px;
   font: 20px bold;
@@ -59,7 +60,7 @@ const LoginForm = () => {
                     <br/>
                     <Input style={{height:"40px"}} name="user-id" value={id} onChange={onChangeId} required/>
                 </div>
-                <div>
+                <div style={{marginTop:"8px"}}>
                     <StyledLabel htmlFor="user-password">비밀번호</StyledLabel>
                     <br/>
                     <Input style={{height:"40px"}} name="user-password" type="password" value={password} onChange={onChangePassword} required/>

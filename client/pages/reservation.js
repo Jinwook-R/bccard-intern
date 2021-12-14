@@ -1,5 +1,21 @@
-import { Calendar, Badge } from 'antd';
+import {Calendar, Badge, Button, DatePicker} from 'antd';
 import AppLayout from "../components/AppLayout";
+import {Typography} from "antd";
+import React, {useState} from "react";
+import styled from "styled-components";
+import {Modal} from "antd";
+const {Text} = Typography;
+
+const StyledReseravtion = styled.div`
+  margin: 20px auto;
+`;
+
+const StyledButton = styled(Button)`
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  font: 20px bold;
+`;
 
 function getListData(value) {
     let listData;
@@ -62,10 +78,56 @@ function monthCellRender(value) {
 }
 
 function Reservation() {
+
+    const [openReservationModal, setOpenReservationModal] = useState(false);
+    const [openReservationRegisterModal, setOpenReservationRegisterModal] = useState(false);
+
+    const onPanelChange = () => {
+        console.log('onPanelChange');
+    }
+
+    const handleCancel = () => {
+        setOpenReservationModal(false);
+    }
+
+    const onSelect = () => {
+        console.log('onSelect');
+        setOpenReservationModal(true);
+    }
+
+    const handleButtonClick = () => {
+        setOpenReservationRegisterModal(true)
+    }
+
+    const handleReservationRegisterCancel = () => {
+        setOpenReservationRegisterModal(false);
+    }
+
+
+    function onDateChange(date, dateString) {
+        console.log(date, dateString);
+    }
+
+
     return (
         <AppLayout>
-            <div>식사 약속 관리</div>
-            <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />
+            <StyledReseravtion>
+                <p style={{textAlign:'center'}}>
+                    <Text strong style={{font:'30px bold'}}>약속 관리</Text>
+                </p>
+                <StyledButton onClick={handleButtonClick}>약속 추가</StyledButton>
+                <Calendar style={{height:"250px"}} dateCellRender={dateCellRender} onPanelChange={onPanelChange} onSelect={onSelect}  />
+                <Modal title="약속 내용" visible={openReservationModal} onCancel={handleCancel}>
+                    <p>Some contents...</p>
+                </Modal>
+
+                {openReservationRegisterModal &&
+                <Modal title="약속 추가" visible={openReservationRegisterModal} onCancel={handleReservationRegisterCancel}>
+                    <DatePicker onChange={onDateChange} />
+                </Modal>
+                }
+
+            </StyledReseravtion>
         </AppLayout>
         );
 }

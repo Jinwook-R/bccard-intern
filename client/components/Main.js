@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {restaurantListRequestAction} from "../reducers/restaurant";
 import styled from "styled-components";
+import MultiMap from "./MultiMap";
 import Header from "./Header";
 import {loadUserRequestAction} from "../reducers/user";
 
@@ -33,27 +34,27 @@ const StyledNavBar = styled.ul`
   @media screen and (max-width: 500px) {
     span {font-size: 15px;}
   }
+  
   font-family: 'Readex Pro', sans-serif;
 `;
 
 const Main = () => {
     const dispatch = useDispatch();
-
+    const {isSignedIn, me} = useSelector(state => state.user);
     useEffect(() => {
+        const id = localStorage.getItem('id');
+        id && dispatch(loadUserRequestAction(id));
         dispatch(restaurantListRequestAction());
     },[]);
 
     return (
         <Row>
+            {isSignedIn && <Header/>}
             <Col xs={0} md={4}></Col>
             <Col xs={24} md={16}>
-                <div>
+                <div style={{margin:"0 5px"}}>
                     <SearchInput/>
-                    <StyledNavBar>
-                        <li><span>한식</span></li>
-                        <li><span>양식</span></li>
-                        <li><span>중식</span></li>
-                    </StyledNavBar>
+                    <MultiMap/>
                     <Category title={"오늘의 추천 맛집"}/>
                     <Category title={"양식"} type={"양식"}/>
                     <Category title={"한식"} type={"한식"}/>

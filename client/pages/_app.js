@@ -4,17 +4,16 @@ import PropTypes from 'prop-types';
 import wrapper from "../store/configureStore";
 import {useSelector} from "react-redux";
 import {useRouter} from "next/router";
+import '../style/index.css';
 
 const App = ({Component}) => {
 
     const {isSignedIn} = useSelector(state => state.user);
     const router = useRouter();
     useEffect(() => {
-
         if(!isSignedIn) {
             router.replace('/')
         }
-
     },[isSignedIn]);
 
     return (
@@ -30,6 +29,5 @@ const App = ({Component}) => {
 App.propTypes = {
     Component: PropTypes.elementType.isRequired,
 }
-
 
 export default wrapper.withRedux(App);

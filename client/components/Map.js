@@ -4,8 +4,14 @@ import styled from "styled-components";
 const StyledMap = styled.div`
   display: block;
   position: inherit;
-  height: 500px; 
   border: black 2px solid;
+  @media screen and (min-width: 501px) {
+    height: 500px;
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 300px;
+  }
 `;
 
 const StyledInfo = styled.span`

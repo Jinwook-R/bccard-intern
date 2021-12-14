@@ -24,7 +24,7 @@ const SearchInput = () => {
     }
 
     return (
-        <div style={{display:"flex"}}>
+        <div style={{display:"flex", marginBottom:"10px"}}>
             <AutoComplete
                 dropdownMatchSelectWidth={252}
                 style={{
@@ -50,4 +50,3 @@ const SearchInput = () => {
 };
 
 export default SearchInput;
-

@@ -45,7 +45,6 @@ export const signUpRequestAction = data => ({
 });
 
 export const signInRequestAction = data => {
-    console.log('!!!!!')
     return ({
     type: SIGN_IN_REQUEST,
     payload: {

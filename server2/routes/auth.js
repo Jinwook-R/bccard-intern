@@ -7,8 +7,6 @@ const router = express.Router();
 
 // 클라이언트에서 새로고침 할 때마다 실행되는 요청
 router.post('/', async (req, res, next) => {
-
-    console.log(req.body);
     try {
         if(req.body.id){
             const user = await User.findOne({
@@ -65,7 +63,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
             console.log('login: ', user);
             return res.status(200).json(user);
         });
-  })(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다.
+  })(req, res, next);
 });
 
 router.post('/logout', (req, res) => {
