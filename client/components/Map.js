@@ -4,7 +4,8 @@ import styled from "styled-components";
 const StyledMap = styled.div`
   display: block;
   position: inherit;
-  border: black 2px solid;
+  border: grey 2px solid;
+  border-radius: 10px;
   @media screen and (min-width: 501px) {
     height: 500px;
   }
@@ -12,17 +13,6 @@ const StyledMap = styled.div`
   @media screen and (max-width: 500px) {
     height: 300px;
   }
-`;
-
-const StyledInfo = styled.span`
-  display: block;
-  background: #50627F;
-  color: #fff;
-  text-align: center;
-  height: 24px;
-  line-height:22px;
-  border-radius:4px;
-  padding:0px 10px;
 `;
 
 const Map = ({lat,lng, name}) => {
@@ -69,8 +59,6 @@ const Map = ({lat,lng, name}) => {
 
             // 마커가 지도 위에 표시되도록 설정합니다
             marker.setMap(map);
-            //`<StyledInfo  style="width:100%; padding:5px;">길 찾기</StyledInfo>`
-            // const iwContent = StyledInfo;
             const iwPosition = new kakao.maps.LatLng(lat, lng); //인포윈도우 표시 위치입니다
 
             // 인포윈도우를 생성합니다
@@ -103,11 +91,8 @@ const Map = ({lat,lng, name}) => {
             });
             infowindow.open(map, marker);
         });
-
     };
-
     mapScript.addEventListener("load", onLoadKakaoMap);
-
 
     return <StyledMap id="map"/>
 };

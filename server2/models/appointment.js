@@ -25,7 +25,7 @@ module.exports = class Appointment extends Sequelize.Model {
     }
 
     static associate(db){
-        // db.Appointment.belongsTo(db.User, { foreignKey: 'userId', targetKey: 'id' }); 
+        db.Appointment.belongsTo(db.User, { foreignKey: 'userId', targetKey: 'id' }); 
     }   
 
 };

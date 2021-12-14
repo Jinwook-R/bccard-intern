@@ -58,7 +58,6 @@ const Main = () => {
                     <Category title={"오늘의 추천 맛집"}/>
                     <Category title={"양식"} type={"양식"}/>
                     <Category title={"한식"} type={"한식"}/>
-                    <Category title={"디저트"} type={"디저트"}/>
                 </div>
             </Col>
             <Col xs={0} md={4}></Col>

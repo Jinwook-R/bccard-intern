@@ -21,7 +21,9 @@ try {
     fs.readdirSync('uploads');
 } catch (error) {
     console.error('uploads 폴더가 없어 uploads 폴더를 생성합니다.');
-    fs.mkdirSync('uploads');
+    if(!fs.readdirSync('uploads')){
+       fs.mkdirSync('uploads');
+    }
 }
 
 const upload = multer({
@@ -41,6 +43,7 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
     console.log(req.file);
     res.json({ url: `/img/${req.file.filename}` });
 });
+
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
     try {

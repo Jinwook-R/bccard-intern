@@ -85,9 +85,7 @@ export const Category = ({title, type}) => {
                                         <p><span>{e.address}</span></p>
                                         <p><span>{e.tel}</span></p>
                                     </StyledImgWrapper>
-
                                 </div>
-
                         </Col>);
                     } else {
                         return null;
@@ -100,16 +98,19 @@ export const Category = ({title, type}) => {
                 {restaurantList?.map((e, idx) => {
                     if (count < 6 && (e.type === type)) {
                         return (<Col xs={12} md={12} lg={8}>
-                            <Link href={{
-                                pathname: '/restaurant',
-                                query: {id: e.id},
-                            }}>
-                                <a>
-                                    <StyledImgWrapper>
-                                        <Meta title={e.name} description="www.aslwdf.com"/>
-                                    </StyledImgWrapper>
-                                </a>
-                            </Link>
+                            <div style={{cursor: "pointer", display:"inline"}}>
+                                <StyledImgWrapper className=".img-wrapper">
+                                    <Link href={{
+                                        pathname: '/restaurant',
+                                        query: {id: e.id},
+                                    }}>
+                                        <img src={API_BASE_URL + `/restaurant/img?fileNo=${e.RestaurantFiles[0]?.fileNo}`}  onClick={handleCardClick}/>
+                                    </Link>
+                                    <p><span></span></p>
+                                    <p><span>{e.address}</span></p>
+                                    <p><span>{e.tel}</span></p>
+                                </StyledImgWrapper>
+                            </div>
                         </Col>);
                     } else {
                         return null;

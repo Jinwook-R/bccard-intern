@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-//테이블 User
+
 module.exports = class User extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
@@ -41,7 +41,7 @@ module.exports = class User extends Sequelize.Model {
     }
 
     static associate(db) {
-        // db.User.hasMany(db.Appointment , { foreignKey: 'userId', sourceKey: 'id' });
+        db.User.hasMany(db.Appointment , { foreignKey: 'userId', sourceKey: 'id' });
         // db.User.belongsTo(db.Review, { foreignKey: 'ref_no', targetKey: 'id' }); belongsTo-> targetKey
     }   
 };
