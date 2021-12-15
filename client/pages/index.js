@@ -5,7 +5,6 @@ import Main from "../components/Main";
 import {useDispatch, useSelector} from "react-redux";
 import {loadUserRequestAction} from "../reducers/user";
 
-
 const Home = () => {
     const {me, isSignedIn} = useSelector(state => state.user);
     const dispatch = useDispatch();
@@ -18,7 +17,6 @@ const Home = () => {
         const id = localStorage.getItem('id');
         id && dispatch(loadUserRequestAction(id));
     },[]);
-
 
     return (
             <AppLayout>

@@ -16,21 +16,22 @@ const upload = multer({
             done(null, basename + new Date().getTime() + ext);
         },
     }),
-    limits: {fileSize: 20 * 1024 * 1024}
+    limits: {fileSize: 200 * 1024 * 1024}
 });
 
-router.post('/images', upload.array('image'), (req, res, next) => {
-    res.json(req.files.map((v) => v.name));
-})
-
 router.post('/insertFile', upload.array('file'), async (req, res) => {
-    console.log(req.file,'!!!!!!!!!!!!!!!!!!!!!');
     try {
-        // console.log(req);
+        console.log(req.file);
     } catch(error) {
-        // console.log(error);
+        console.log(error);
     }
     res.json(req.files)
 });
+
+router.post('/insert', (req, res) => {
+    console.log(req.body);
+    return res.json();
+});
+
 
 module.exports = router;

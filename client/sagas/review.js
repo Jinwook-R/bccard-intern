@@ -12,7 +12,6 @@ function reviewInsertAPI(data) {
 }
 
 function reviewFileInsertAPI(data) {
-    console.log('reviewFileInsertAPI')
     return reviewFileInsertRequest(data);
 }
 
@@ -21,14 +20,17 @@ function myReviewListAPI( userId ) {
 }
 
 function* myReviewList( {payload} ) {
-    try{
+
+    try {
+
         const userId = payload;
         const result = yield myReviewListAPI(userId);
+
         yield put({
             type: MY_REVIEW_LIST_SUCCESS,
             payload: result
-        })
-    }catch (err) {
+        });
+    } catch (err) {
         yield put({
             type: MY_REVIEW_LIST_FAILURE,
             error: err.response.data,
@@ -59,8 +61,8 @@ function* reviewFileInsert( {payload} ) {
 function* reviewInsert( {payload} ) {
     console.log('reviewInsert:' , payload);
     try {
-        const file = payload;
-        const result = yield call(reviewInsertAPI, file);
+        const data = payload;
+        const result = yield call(reviewInsertAPI, data);
         yield put({
             type: REVIEW_FILE_REGISTER_SUCCESS,
             payload: result,

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-//테이블 restaurantFile
+
 module.exports = class RestaurantFile extends Sequelize.Model {
     static init(sequelize) {
         return super.init({

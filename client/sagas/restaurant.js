@@ -26,7 +26,7 @@ function* restaurantList() {
 }
 
 function* watchRestaurantList() {
-    console.log("watchRestaurantList started")
+    console.log("watchRestaurantList started");
     yield takeEvery(actions.RESTAURANT_LIST_REQUEST, restaurantList);
 }
 

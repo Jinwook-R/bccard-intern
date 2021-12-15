@@ -7,6 +7,7 @@ const router = express.Router();
 
 // 클라이언트에서 새로고침 할 때마다 실행되는 요청
 router.post('/', async (req, res, next) => {
+
     try {
         if(req.body.id){
             const user = await User.findOne({

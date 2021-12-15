@@ -1,24 +1,16 @@
 import React, {useEffect} from 'react';
 import AppLayout from "../components/AppLayout";
 import {useDispatch, useSelector} from "react-redux";
-import {Descriptions, Typography} from "antd";
-import styled from "styled-components";
+import {Typography} from "antd";
 
 const {Text} = Typography
-
-const StyledProfile = styled.div`
-  width: 500px;
-  margin: 10px auto;
-  padding: 0 10px;
-`;
 
 const Profile = () => {
     const {me} = useSelector(state => state.user);
     const dispatch = useDispatch();
 
     useEffect(()=> {
-        // console.log("dispatch MyReviewListRequestAction");
-        // dispatch(MyReivewListRequestAction(user?.id));
+        console.log("dispatch MyReviewListRequestAction");
     }, []);
 
     console.log(me)

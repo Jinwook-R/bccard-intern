@@ -11,7 +11,6 @@ import {
 } from "../reducers/user";
 
 function loadUserAPI(data) {
-    console.log('loadUserAPI start',data);
     return loadUserRequest(data);
 }
 
@@ -21,15 +20,15 @@ function signInAPI(data) {
 
 function* loadUser({payload}) {
      try {
-        const {user} = payload;
-        const result = yield call(loadUserAPI, user);
+        const {id} = payload;
+        const result = yield call(loadUserAPI, id);
 
         yield put({
             type: LOAD_USER_SUCCESS,
             payload: result.data,
         });
     }catch (error) {
-
+         console.log(error);
     }
 }
 
@@ -77,7 +76,6 @@ function* signOut() {
     console.log('signOut');
     try {
         const result = yield call(signOutAPI);
-        console.log(result)
         yield put({
             type: SIGN_OUT_SUCCESS,
         });
@@ -105,8 +103,6 @@ function* watchSignOut() {
 function* watchLoadUser() {
     yield takeEvery(actions.LOAD_USER_REQUEST, loadUser);
 }
-
-
 
 export default function* userSaga() {
     yield all([

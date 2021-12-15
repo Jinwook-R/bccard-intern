@@ -1,5 +1,6 @@
 export const initialState = {
     review: null,
+    imagePaths: null
 };
 
 export const REVIEW_REGISTER_REQUEST = 'REVIEW_REGISTER_REQUEST';

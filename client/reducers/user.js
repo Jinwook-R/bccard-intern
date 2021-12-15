@@ -6,14 +6,13 @@ export const initialState = {
     isSigningOut: false, // 로그아웃 시도중
     isSignedOut: false,
     isSigningIn: false, // 로그인 시도중
-    signInErrorReason: '', // 로그인 실패 사유
-    isSignedUp: false, // 회원가입 성공
-    isSignIngUp: false, // 회원가입 시도중
-    signUpErrorReason: '', // 회원가입 실패 사유
-    me: null, // 내 정보
+    signInErrorReason: '',
+    isSignedUp: false,
+    isSignIngUp: false,
+    signUpErrorReason: '',
+    me: null,
 };
 
-// Action types
 export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
@@ -53,7 +52,7 @@ export const signInRequestAction = data => {
 })};
 
 export const signOutRequestAction = () => {
-    return ({type: SIGN_OUT_REQUEST});
+    return {type: SIGN_OUT_REQUEST};
 };
 
 export default (state = initialState, action) => {

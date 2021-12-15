@@ -1,11 +1,9 @@
 import * as React from 'react';
-import {Card, Row, Col} from 'antd';
+import {Card, Row, Col, Typography} from 'antd';
 import Link from "next/link";
 import {useSelector} from "react-redux";
 import {API_BASE_URL} from "../api/config";
 import styled from "styled-components";
-
-const {Meta} = Card;
 
 const StyledImgWrapper = styled.div`
   cursor: pointer;
@@ -39,23 +37,8 @@ const StyledImgWrapper = styled.div`
   
 `;
 
-const StyledMeta = styled(Meta)`
-  position: relative;
-  font-size: 0.875rem;
-  line-height: 1rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  overflow-wrap: break-word;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  font-weight: 600;
-  margin: 0px;
-  padding: 0px;
-  border: 0px;
-  font: inherit;
-  vertical-align: baseline;
-`;
+const {Text} = Typography;
+
 
 export const Category = ({title, type}) => {
 
@@ -72,25 +55,24 @@ export const Category = ({title, type}) => {
             {!type && <Row gutter={[10, 10]} style={{width: "100%"}}>
                 {restaurantList?.map((e, idx) => {
                     if (idx < 6) {
-                        return (<Col xs={12} md={8}>
+                        return (
+                            <Col xs={12} md={8}>
                                 <div style={{cursor: "pointer", display:"inline"}}>
                                     <StyledImgWrapper className=".img-wrapper">
                                         <Link href={{
                                             pathname: '/restaurant',
                                             query: {id: e.id},
                                         }}>
-                                            <img src={API_BASE_URL + `/restaurant/img?fileNo=${e.RestaurantFiles[0]?.fileNo}`}  onClick={handleCardClick}/>
+                                            <img src={API_BASE_URL + `/restaurant/img?fileNo=${e.RestaurantFiles[0]?.fileNo}`} onClick={handleCardClick}/>
                                         </Link>
-                                        <p><span></span></p>
-                                        <p><span>{e.address}</span></p>
-                                        <p><span>{e.tel}</span></p>
                                     </StyledImgWrapper>
+                                    <Text strong style={{fontSize:"16px"}}>{e.name}</Text>
+                                    <div><Text style={{fontSize:"13px"}}>{e.tel}</Text></div>
                                 </div>
-                        </Col>);
+                            </Col>);
                     } else {
                         return null;
-                    }
-                    })
+                    }})
                 }
             </Row>
             }
@@ -106,10 +88,10 @@ export const Category = ({title, type}) => {
                                     }}>
                                         <img src={API_BASE_URL + `/restaurant/img?fileNo=${e.RestaurantFiles[0]?.fileNo}`}  onClick={handleCardClick}/>
                                     </Link>
-                                    <p><span></span></p>
-                                    <p><span>{e.address}</span></p>
-                                    <p><span>{e.tel}</span></p>
                                 </StyledImgWrapper>
+                                <Text strong style={{fontSize:"16px"}}>{e.name}</Text>
+                                <div><Text style={{fontSize:"13px"}}>{e.tel}</Text></div>
+                                <Text style={{fontSize:"13px"}}>{e.RestaurantMenus[0]}</Text>
                             </div>
                         </Col>);
                     } else {

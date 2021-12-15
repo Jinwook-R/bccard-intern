@@ -120,7 +120,6 @@ function Reservation() {
                 <Modal title="약속 내용" visible={openReservationModal} onCancel={handleCancel}>
                     <p>Some contents...</p>
                 </Modal>
-
                 {openReservationRegisterModal &&
                 <Modal title="약속 추가" visible={openReservationRegisterModal} onCancel={handleReservationRegisterCancel}>
                     <DatePicker onChange={onDateChange} />

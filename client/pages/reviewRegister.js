@@ -1,19 +1,18 @@
 import React, {
-    useCallback,
+    useCallback, useEffect,
     useRef,
     useState,
 } from "react";
 import {withRouter} from "next/router";
 import AppLayout from "../components/AppLayout";
 import {useDispatch, useSelector} from "react-redux";
-import {ReviewFileRegisterRequestAction} from "../reducers/review";
+import {ReviewFileRegisterRequestAction, ReviewRegisterRequestAction} from "../reducers/review";
 import styled from "styled-components";
 import {Button, Form, Upload} from "antd";
 import {Input} from 'antd';
 import { Rate } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import {Typography} from "antd";
-import axios from "axios";
 
 const {Text} = Typography;
 const {TextArea} = Input;
@@ -25,7 +24,6 @@ const StyledReviewRegister = styled.div`
 const StyledTextArea = styled(TextArea)`
   height: 200px;
   margin-bottom: 10px;
-  
 `;
 
 const StyledButton = styled(Button)`
@@ -39,21 +37,17 @@ const StyledButton = styled(Button)`
 
 const ReviewRegister = ({ router: { query } }) => {
 
-    const [selectedFiles, setSelectedFiles] = useState(null);
-    const [tmpSelectedFiles, setTmpSelectedFiles] = useState(null);
+    const [selectedFiles, setSelectedFiles] = useState([]);
 
     const [starValue, setStarValue] = useState(1);
-    const [textValue, setTextValue] = useState('');
+    const [contentValue, setContentValue] = useState('');
 
-    const [fileList, setFileList] = useState([]);
-
-    const user_id = useSelector(state => state.user?.me?.id);
-    const {restaurant_id} = query;
-    const restaurantId = restaurant_id;
+    const user = useSelector(state => state.user?.me);
+    const {restaurantId} = query;
     const dispatch = useDispatch();
 
     const onTextChange = (e) => {
-        setTextValue(e.target.value);
+        setContentValue(e.target.value);
     }
 
     const handleStarChange = (starValue) => {
@@ -61,17 +55,22 @@ const ReviewRegister = ({ router: { query } }) => {
     }
 
     const onClickHandler = event => {
+        // 이미지 업로드, 유저 아이디, 식당 아이디
         const formData = new FormData();
-        console.log(event)
-        formData.append('file', fileList);
-        console.log(formData,'!!!!!!!!!!!!!!!!');
-        axios.post('http://localhost:8080/review/insertFile', formData).then(r =>{} );
-        // dispatch(ReviewFileRegisterRequestAction(formData));
-    };
+        [].forEach.call(selectedFiles, (f) => {
+            formData.append('file', f.originFileObj);
+        });
+        dispatch(ReviewFileRegisterRequestAction(formData));
 
-    const onChangeImages = async ({fileList}) => {
-        setFileList(fileList);
-    }
+        dispatch(ReviewRegisterRequestAction(
+            {
+                'userId': user.id,
+                'content': contentValue,
+                'star' : starValue
+            }
+        ));
+
+    };
 
     const onPreview = async file => {
         let src = file.url;
@@ -88,15 +87,9 @@ const ReviewRegister = ({ router: { query } }) => {
         imgWindow.document.write(image.outerHTML);
     };
 
-    const handleFileChange = (e) => {
-        const formData = new FormData();
-
-        formData.append('file',e.target.files);
-        setSelectedFiles(formData);
-        setTmpSelectedFiles(e.target.files);
-        // axios.post('http://localhost:8080/review/insertFile',formData);
+    const handleFileChange = ({ fileList: newFileList }) => {
+        setSelectedFiles(newFileList);
     }
-
 
     return (
         <AppLayout>
@@ -108,18 +101,16 @@ const ReviewRegister = ({ router: { query } }) => {
                     <span>별점<Rate onChange={handleStarChange} value={starValue}/></span>
                     <StyledTextArea showCount maxLength={5000} onChange={onTextChange} />
                     <div className="App" style={{ marginTop: "10px" }}>
-                        <input id="imageUpload" type="file" multiple={true} onChange={handleFileChange}/>
-                        <StyledButton for="imageUpload">파일 선택하기</StyledButton>
                         <ImgCrop rotate>
                             <Upload
                                 type="file"
                                 multiple
                                 listType="picture-card"
-                                fileList={fileList}
+                                fileList={selectedFiles}
+                                onChange={handleFileChange}
                                 onPreview={onPreview}
-                                disabled={true}
                             >
-                                {fileList.length < 5 && ' '}
+                                {selectedFiles.length < 5 && ' Upload + '}
                             </Upload>
                         </ImgCrop>
                         <StyledButton type="button" htmlType="submit">저장하기</StyledButton>

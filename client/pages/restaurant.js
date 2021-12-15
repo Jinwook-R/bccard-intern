@@ -7,6 +7,7 @@ import {Badge, Button, Col, Image, List, Row, Space, Typography} from 'antd';
 import Avatar from "antd/es/avatar/avatar";
 import Link from "next/link";
 import styled from "styled-components";
+import {useEffect} from "react";
 
 const {Text} = Typography
 
@@ -109,6 +110,12 @@ const Restaurant = ({ router: { query } }) => {
 
     const {restaurantList} = useSelector(state => state.restaurant);
     const {address, lat, lng, name, tel, type, price, parking, RestaurantMenus} = restaurantList.filter((e)=> e.id == query.id)[0];
+    let user = useSelector(state => state.user.me);
+
+    useEffect(() => {
+        console.log(user,'!!!!!!!!!!!!!!!!!!!!!!!');
+    },[]);
+
 
     return (
         <AppLayout>
@@ -160,7 +167,10 @@ const Restaurant = ({ router: { query } }) => {
                     <Link
                         href={{
                             pathname: '/reviewRegister',
-                            query: {restaurant_id: query.id},
+                            query: {
+                                restaurantId: query.id
+
+                            },
                         }}
                     >
                         <Button style={{width:"100%", margin:"10px 0", height:"50px", backgroundColor:'whitesmoke', borderRadius:"5px"}}>

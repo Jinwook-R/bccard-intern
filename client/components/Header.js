@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {signOutRequestAction} from "../reducers/user";
-import {useDispatch} from "react-redux";
+import { signOutRequestAction } from "../reducers/user";
+import { useDispatch } from "react-redux";
 import Link from "next/link";
 import styled from "styled-components";
-import {Menu} from "antd";
+import { Menu } from "antd";
 
 const StyledHeader = styled.div`
     .ant-menu-submenu-title {
@@ -15,9 +15,7 @@ const StyledHeader = styled.div`
 `;
 
 const Header = () => {
-
     const dispatch = useDispatch();
-
     const handleSignOut = () => {
         localStorage.clear();
         dispatch(signOutRequestAction());
@@ -32,7 +30,7 @@ const Header = () => {
                             <Menu.ItemGroup>
                                 <Menu.Item key="setting1"><Link href="/profile">내 정보</Link></Menu.Item>
                                 <Menu.Item key="setting2"><Link href="/reservation">약속 관리</Link></Menu.Item>
-                                <Menu.Item key="setting2" onClick={handleSignOut}>로그아웃</Menu.Item>
+                                <Menu.Item key="setting3" onClick={handleSignOut}>로그아웃</Menu.Item>
                             </Menu.ItemGroup>
                         </Menu.SubMenu>
                     </Menu>
