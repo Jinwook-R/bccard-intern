@@ -7,9 +7,9 @@ import {useRouter} from "next/router";
 import '../style/index.css';
 
 const App = ({Component}) => {
-
     const {isSignedIn} = useSelector(state => state.user);
     const router = useRouter();
+
     useEffect(() => {
         if(!isSignedIn) {
             router.replace('/')

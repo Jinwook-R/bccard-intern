@@ -20,8 +20,12 @@ function signInAPI(data) {
 
 function* loadUser({payload}) {
      try {
-        const {id} = payload;
+        const id = payload;
+        alert(id)
+         console.log(id,'********************');
         const result = yield call(loadUserAPI, id);
+
+
 
         yield put({
             type: LOAD_USER_SUCCESS,

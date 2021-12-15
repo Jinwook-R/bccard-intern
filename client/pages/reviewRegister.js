@@ -55,15 +55,17 @@ const ReviewRegister = ({ router: { query } }) => {
     }
 
     const onClickHandler = event => {
-        // 이미지 업로드, 유저 아이디, 식당 아이디
+
         const formData = new FormData();
+
         [].forEach.call(selectedFiles, (f) => {
             formData.append('file', f.originFileObj);
         });
+
         dispatch(ReviewFileRegisterRequestAction(formData));
 
         dispatch(ReviewRegisterRequestAction(
-            {
+        {
                 'userId': user.id,
                 'content': contentValue,
                 'star' : starValue

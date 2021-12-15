@@ -65,7 +65,6 @@ const MultiMap = () => {
                             window.open(`https://map.kakao.com/link/from/내위치,${position.coords.latitude},${position.coords.longitude}/to/${name},${e.lat},${e.lng}`);
                         },
                     );
-
                     marker.setMap(map);
                 });
             });

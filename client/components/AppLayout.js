@@ -9,13 +9,11 @@ const StyledAppLayout = styled.div`
 `;
 
 const AppLayout = ({children}) => {
-
     return (
         <>
-
-        <StyledAppLayout>
-          {children}
-        </StyledAppLayout>
+            <StyledAppLayout>
+              {children}
+            </StyledAppLayout>
         </>
     );
 };

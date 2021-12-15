@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a1d590c-1cf9-4960-9e52-e9dd6f8b7fa3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../server2/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../server2/config/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server2/node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node" beforeDir="false" afterPath="$PROJECT_DIR$/../server2/node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server2/routes/review.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server2/routes/review.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server2/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server2/routes/auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -99,6 +97,7 @@
       <workItem from="1639263360836" duration="37302000" />
       <workItem from="1639490892454" duration="6019000" />
       <workItem from="1639530378691" duration="12540000" />
+      <workItem from="1639556273511" duration="1159000" />
     </task>
     <servers />
   </component>

@@ -6,16 +6,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {loadUserRequestAction} from "../reducers/user";
 
 const Home = () => {
-    const {me, isSignedIn} = useSelector(state => state.user);
+    const { me, isSignedIn } = useSelector(state => state.user);
     const dispatch = useDispatch();
 
     useEffect(() => {
         me && isSignedIn && localStorage.setItem('id', me.id);
-    },[me])
+    },[me]);
 
     useEffect(() => {
         const id = localStorage.getItem('id');
-        id && dispatch(loadUserRequestAction(id));
+        id && dispatch(loadUserRequestAction({id}));
     },[]);
 
     return (

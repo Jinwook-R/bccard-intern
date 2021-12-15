@@ -7,14 +7,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {restaurantListRequestAction} from "../reducers/restaurant";
 import MultiMap from "./MultiMap";
 import Header from "./Header";
-import {loadUserRequestAction} from "../reducers/user";
 
 const Main = () => {
     const dispatch = useDispatch();
     const {isSignedIn, me} = useSelector(state => state.user);
     useEffect(() => {
-        // const id = localStorage.getItem('id');
-        // id  && dispatch(loadUserRequestAction({ id }));
         dispatch(restaurantListRequestAction());
     },[]);
 

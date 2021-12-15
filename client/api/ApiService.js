@@ -49,12 +49,10 @@ export function logInRequest(user) {
 }
 
 export function signOutRequest() {
-    console.log('signOutRequest');
     return axios.post('/auth/logout');
 }
 
 export function myreviewlist(userId) {
-    console.log('myreviewlist API Called');
     return call("/review/userReview", "GET", userId)
         .then((response) => {
             if(response) {
@@ -67,7 +65,7 @@ export function myreviewlist(userId) {
 export function signup(user) {
     return call("/auth/signup", "POST", user)
         .then((response) => {
-            console.log(response.status);
+            // console.log(response.status);
             if(response.status === 200) {
                 alert("회원가입이 완료되었습니다:)");
             } else {
@@ -81,12 +79,11 @@ export function reviewInsertRequest({review}) {
 }
 
 export function reviewFileInsertRequest(file){
-    console.log('reviewFileInsertRequest: ', file);
+    // console.log('reviewFileInsertRequest: ', file);
 
-    for(const pair of file.entries()) {
-        console.log(pair[0]+ ', '+ pair[1]);
-    }
-
+    // for(const pair of file.entries()) {
+    //     console.log(pair[0]+ ', '+ pair[1]);
+    // }
     return axios.post("/review/insertFile" ,file);
 }
 
