@@ -62,8 +62,10 @@ const ReviewRegister = ({ router: { query } }) => {
             formData.append('file', f.originFileObj);
         });
 
-        dispatch(ReviewFileRegisterRequestAction(formData));
+        formData.append('userId', user.id);
+        formData.append('restaurantId', restaurantId);
 
+        dispatch(ReviewFileRegisterRequestAction(formData));
         dispatch(ReviewRegisterRequestAction(
         {
                 'userId': user.id,
