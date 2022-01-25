@@ -10,7 +10,7 @@ import Header from "./Header";
 
 const Main = () => {
     const dispatch = useDispatch();
-    const {isSignedIn, me} = useSelector(state => state.user);
+    const {isSignedIn} = useSelector(state => state.user);
     useEffect(() => {
         dispatch(restaurantListRequestAction());
     },[]);

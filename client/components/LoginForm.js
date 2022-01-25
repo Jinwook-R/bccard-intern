@@ -36,7 +36,6 @@ const StyledP = styled.p`
   @media screen and (max-width: 500px) {
     font-size: 15px;
   }
-
 `;
 
 const LoginForm = () => {
@@ -53,7 +52,7 @@ const LoginForm = () => {
 
     return (
         <StyledLoginForm>
-            <StyledP style={{fontSize:'50px', fontStyle:'bold', textAlign:'center'}}>BC로(路)</StyledP>
+            <StyledP style={{fontSize:'50px', fontStyle:'bold', textAlign:'center'}}>BC로</StyledP>
             <div>
                 <div>
                     <StyledLabel htmlFor="user-id">아이디</StyledLabel>

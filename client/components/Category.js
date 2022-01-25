@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Card, Row, Col, Typography} from 'antd';
+import {Row, Col, Typography} from 'antd';
 import Link from "next/link";
 import {useSelector} from "react-redux";
 import {API_BASE_URL} from "../api/config";
@@ -34,7 +34,6 @@ const StyledImgWrapper = styled.div`
   @media screen and (max-width: 500px) {
     font-size: 8px;
   }
-  
 `;
 
 const {Text} = Typography;
@@ -46,7 +45,6 @@ export const Category = ({title, type}) => {
     let count = 0;
 
     const handleCardClick = (e) => {
-        console.log(restaurantList);
     };
 
     return (
@@ -77,7 +75,7 @@ export const Category = ({title, type}) => {
             </Row>
             }
             {type && <Row gutter={[10, 10]} style={{width: "100%"}}>
-                {restaurantList?.map((e, idx) => {
+                {restaurantList?.map((e) => {
                     if (count < 6 && (e.type === type)) {
                         return (<Col xs={12} md={12} lg={8}>
                             <div style={{cursor: "pointer", display:"inline"}}>
@@ -90,7 +88,7 @@ export const Category = ({title, type}) => {
                                     </Link>
                                 </StyledImgWrapper>
                                 <Text strong style={{fontSize:"16px"}}>{e.name}</Text>
-                                <div><Text style={{fontSize:"13px"}}>{e.tel}</Text></div>
+                                <><Text style={{fontSize:"13px"}}>{e.tel}</Text></>
                                 <Text style={{fontSize:"13px"}}>{e.RestaurantMenus[0]}</Text>
                             </div>
                         </Col>);

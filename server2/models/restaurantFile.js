@@ -8,7 +8,7 @@ module.exports = class RestaurantFile extends Sequelize.Model {
                 allowNull: false,
                 primaryKey:true
             },
-            fileName: {
+            fileName: { 
                 type: Sequelize.STRING(100),
                 allowNull: false,
             },

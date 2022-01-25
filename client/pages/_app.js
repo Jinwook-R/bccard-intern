@@ -18,6 +18,7 @@ const App = ({Component}) => {
 
     return (
         <>
+            <title>BC로</title>
             <Component/>
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>

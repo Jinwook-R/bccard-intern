@@ -13,8 +13,6 @@ const Profile = () => {
         console.log("dispatch MyReviewListRequestAction");
     }, []);
 
-    console.log(me)
-
     return(
         <AppLayout>
             <div>

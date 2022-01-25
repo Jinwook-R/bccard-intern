@@ -19,7 +19,6 @@ const MultiMap = () => {
     const restaurantList = useSelector(state => state.restaurant.restaurantList);
 
     document.head.appendChild(mapScript);
-
     const onLoadKakaoMap = () => {
         window.kakao.maps.load(() => {
 
@@ -44,8 +43,8 @@ const MultiMap = () => {
             map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
             positions?.map((e)=> {
-                // 마커가 표시될 위치입니다
-                const markerPosition = new window.kakao.maps.LatLng(e.lat, e.lng);
+                const {title} = e;
+                const {La, Ma} = e.latlng;
                 const imageSize = new kakao.maps.Size(24, 35);
                 const imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
                 const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
@@ -62,14 +61,13 @@ const MultiMap = () => {
                 kakao.maps.event.addListener(marker, 'click', function() {
                     navigator.geolocation.getCurrentPosition(
                         function(position) {
-                            window.open(`https://map.kakao.com/link/from/내위치,${position.coords.latitude},${position.coords.longitude}/to/${name},${e.lat},${e.lng}`);
+                            window.open(`https://map.kakao.com/link/from/내위치,${position.coords.latitude},${position.coords.longitude}/to/${title},${Ma},${La}`);
                         },
                     );
-                    marker.setMap(map);
                 });
+                marker.setMap(map);
             });
         });
-
     };
 
     mapScript.addEventListener("load", onLoadKakaoMap);

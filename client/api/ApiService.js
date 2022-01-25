@@ -1,5 +1,6 @@
 import {API_BASE_URL} from './config.js';
 import axios from "axios";
+
 function call(api, method, data, config){
     let headers;
 
@@ -65,7 +66,6 @@ export function myreviewlist(userId) {
 export function signup(user) {
     return call("/auth/signup", "POST", user)
         .then((response) => {
-            // console.log(response.status);
             if(response.status === 200) {
                 alert("회원가입이 완료되었습니다:)");
             } else {
@@ -79,11 +79,6 @@ export function reviewInsertRequest({review}) {
 }
 
 export function reviewFileInsertRequest(file){
-    // console.log('reviewFileInsertRequest: ', file);
-
-    // for(const pair of file.entries()) {
-    //     console.log(pair[0]+ ', '+ pair[1]);
-    // }
     return axios.post("/review/insertFile" ,file);
 }
 
@@ -96,4 +91,3 @@ export function restaurantlist() {
             return response;
         });
 }
-

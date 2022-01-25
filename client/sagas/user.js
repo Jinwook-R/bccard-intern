@@ -21,12 +21,7 @@ function signInAPI(data) {
 function* loadUser({payload}) {
      try {
         const id = payload;
-        alert(id)
-         console.log(id,'********************');
         const result = yield call(loadUserAPI, id);
-
-
-
         yield put({
             type: LOAD_USER_SUCCESS,
             payload: result.data,
@@ -45,7 +40,6 @@ function* signIn({payload}) {
             payload: result.data,
         });
     } catch (err) {
-        alert(err.response.data);
         yield put({
             type: SIGN_IN_FAILURE,
             error: err.response.data,
@@ -84,7 +78,6 @@ function* signOut() {
             type: SIGN_OUT_SUCCESS,
         });
     } catch (err) {
-        console.error(err);
         yield put({
             type: SIGN_OUT_FAILURE,
             error: err.response.data,

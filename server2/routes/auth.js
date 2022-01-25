@@ -8,6 +8,7 @@ const router = express.Router();
 // 클라이언트에서 새로고침 할 때마다 실행되는 요청
 router.post('/', async (req, res, next) => {
     try {
+        console.log(req.body.id);
         if(req.body.id){
             const user = await User.findOne({
                 where: {id: req.body.id}
@@ -22,7 +23,7 @@ router.post('/', async (req, res, next) => {
         next(error);
     }
 })
-
+//https://map.kakao.com/?map_type=TYPE_MAP&target=car&rt=526809%2C1066531%2C498084%2C1128830&rt1=%EB%82%B4%EC%9C%84%EC%B9%98&rt2=%EC%82%AC%EB%9E%91%EB%B0%A9%EC%B9%BC%EA%B5%AD%EC%88%98&rtIds=%2C&rtTypes=%2C
 router.post('/signup', isNotLoggedIn, async (req, res, next) => {
     const { id, password, username, department, rankType, userType } = req.body;
     try {

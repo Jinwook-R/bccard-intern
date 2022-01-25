@@ -1,7 +1,5 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Header from "./Header";
-import {useSelector} from "react-redux";
 import styled from "styled-components";
 
 const StyledAppLayout = styled.div`

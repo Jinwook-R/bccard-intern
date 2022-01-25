@@ -3,8 +3,7 @@ import AppLayout from "../components/AppLayout";
 import { withRouter } from 'next/router';
 import Map from "../components/Map";
 import {useSelector} from "react-redux";
-import {Badge, Button, Col, Image, List, Row, Space, Typography} from 'antd';
-import Avatar from "antd/es/avatar/avatar";
+import {Button, Col, Image, List, Row, Space, Typography} from 'antd';
 import Link from "next/link";
 import styled from "styled-components";
 import {useEffect} from "react";
@@ -36,21 +35,6 @@ const data = [
     {
         title: '또 가고 싶네요',
         content: '집이랑 가깝고 맛있어요'
-    },
-];
-
-const data2 = [
-    {
-        title: 'Ant Design Title 1',
-    },
-    {
-        title: 'Ant Design Title 2',
-    },
-    {
-        title: 'Ant Design Title 3',
-    },
-    {
-        title: 'Ant Design Title 4',
     },
 ];
 
@@ -168,8 +152,8 @@ const Restaurant = ({ router: { query } }) => {
                         href={{
                             pathname: '/reviewRegister',
                             query: {
-                                restaurantId: query.id
-
+                                restaurantId: query.id,
+                                restaurantName: query.name
                             },
                         }}
                     >
@@ -184,7 +168,6 @@ const Restaurant = ({ router: { query } }) => {
                         renderItem={item => (
                             <List.Item>
                                 <List.Item.Meta
-                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
                                     title={<a href="https://ant.design">{item.title}</a>}
                                     description={item.content}
                                 />

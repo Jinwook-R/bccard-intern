@@ -11,7 +11,6 @@ const upload = multer({
             done(null, path.join(__dirname,'/uploads/review_file'));
         },
         filename(req, file, done) {
-            console.log(req.userId);
             const ext = path.extname(file.originalname);
             const basename = path.basename(file.originalname, ext);
             done(null, basename + new Date().getTime() + ext);
@@ -22,8 +21,7 @@ const upload = multer({
 
 router.post('/insertFile', upload.array('file'), async (req, res) => {
     try {
-        console.log(req.userId);
-        console.log(req.restaurantId);
+        console.log(req.body);
     } catch(error) {
         console.log(error);
     }
@@ -31,9 +29,7 @@ router.post('/insertFile', upload.array('file'), async (req, res) => {
 });
 
 router.post('/insert', (req, res) => {
-    console.log(req.body);
     return res.json();
 });
-
 
 module.exports = router;

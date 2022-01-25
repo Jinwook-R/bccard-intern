@@ -15,6 +15,7 @@ const StyledHeader = styled.div`
 `;
 
 const Header = () => {
+
     const dispatch = useDispatch();
     const handleSignOut = () => {
         localStorage.clear();

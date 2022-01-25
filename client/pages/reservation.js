@@ -125,7 +125,6 @@ function Reservation() {
                     <DatePicker onChange={onDateChange} />
                 </Modal>
                 }
-
             </StyledReseravtion>
         </AppLayout>
         );

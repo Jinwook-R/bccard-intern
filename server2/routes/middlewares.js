@@ -1,6 +1,3 @@
-/* 여러 라우터에서 재사용할 미들웨어들 모아두기 */
-
-
 //로그인 한 사람들만 로그인 통과
 exports.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {

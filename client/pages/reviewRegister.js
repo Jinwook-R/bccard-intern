@@ -1,8 +1,4 @@
-import React, {
-    useCallback, useEffect,
-    useRef,
-    useState,
-} from "react";
+import React, {useState} from "react";
 import {withRouter} from "next/router";
 import AppLayout from "../components/AppLayout";
 import {useDispatch, useSelector} from "react-redux";
@@ -43,7 +39,7 @@ const ReviewRegister = ({ router: { query } }) => {
     const [contentValue, setContentValue] = useState('');
 
     const user = useSelector(state => state.user?.me);
-    const {restaurantId} = query;
+    const {restaurantId, restaurantName} = query;
     const dispatch = useDispatch();
 
     const onTextChange = (e) => {
@@ -59,21 +55,24 @@ const ReviewRegister = ({ router: { query } }) => {
         const formData = new FormData();
 
         [].forEach.call(selectedFiles, (f) => {
+            // f.originFileObj.name = `${restaurantName}.png`
+            console.log(f.originFileObj)
             formData.append('file', f.originFileObj);
         });
 
-        formData.append('userId', user.id);
-        formData.append('restaurantId', restaurantId);
+        formData.append('data', {
+            'userId': user.id,
+            'restaurantName' : restaurantName
+        });
 
         dispatch(ReviewFileRegisterRequestAction(formData));
         dispatch(ReviewRegisterRequestAction(
         {
-                'userId': user.id,
-                'content': contentValue,
+                'userId' : user.id,
+                'content' : contentValue,
                 'star' : starValue
             }
         ));
-
     };
 
     const onPreview = async file => {
@@ -114,7 +113,7 @@ const ReviewRegister = ({ router: { query } }) => {
                                 onChange={handleFileChange}
                                 onPreview={onPreview}
                             >
-                                {selectedFiles.length < 5 && ' Upload + '}
+                            {selectedFiles.length < 5 && ' Upload + '}
                             </Upload>
                         </ImgCrop>
                         <StyledButton type="button" htmlType="submit">저장하기</StyledButton>
